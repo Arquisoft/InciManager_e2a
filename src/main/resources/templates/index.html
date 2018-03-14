@@ -1,13 +1,12 @@
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-<title>Hola</title>
-</head>
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="fragments/head" />
 <body>
-<h1>InciManager skeleton</h1>
-<form th:action="@{/send}" th:object="${message}" method="POST">
-    <label for="message">Type a message: </label>
-    <input type="text" id="message" th:field="*{message}" />
-    <input type="submit" value="Send" />
-</form>
+	<nav th:replace="fragments/nav" />
+	<div class="container" style="text-align: center">
+		<h2 th:text="#{welcome.message}"></h2>
+		<p>Sistema de gestión de incidencias</p>
+	</div>
+	<footer th:replace="fragments/footer" />
 </body>
 </html>

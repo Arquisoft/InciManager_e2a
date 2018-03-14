@@ -1,4 +1,4 @@
-package hello;
+package kafka;
 
 
 import org.springframework.web.bind.annotation.RequestMapping;
