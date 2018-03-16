@@ -3,24 +3,31 @@ package entities;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 @Entity
-public class User {
+public class Usuario {
 	
 	@Id @GeneratedValue Long id;
 	
 	//Propiedades del usuario
+	@Column(unique=true)
 	private String username;
 	private String password;
 	
 	@OneToMany(mappedBy="user")
-	Set<Incidence> incidencias = new HashSet<Incidence>();
+	Set<Incidencia> incidencias = new HashSet<Incidencia>();
 	
-	public User() {
+	public Usuario(String username, String password) {
+		this.username = username;
+		this.password = password;
+	}
+	
+	public Usuario() {
 		
 	}
 
@@ -40,11 +47,11 @@ public class User {
 		this.password = password;
 	}
 
-	public Set<Incidence> getIncidencias() {
+	public Set<Incidencia> getIncidencias() {
 		return incidencias;
 	}
 
-	public void setIncidencias(Set<Incidence> incidencias) {
+	public void setIncidencias(Set<Incidencia> incidencias) {
 		this.incidencias = incidencias;
 	}
 	
