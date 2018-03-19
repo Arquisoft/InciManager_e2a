@@ -2,7 +2,6 @@ package manager.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class HomeController {
@@ -11,24 +10,34 @@ public class HomeController {
 	public String index() {
 		return "index";
 	}
-	
-	@RequestMapping(value = "/sendIncidence")
-	public String sendIncidence() {
-		return "sendIncidence";
+
+	@RequestMapping(value = "/formSendIncidence")
+	public String formSendIncidence() {
+		return "formSendIncidence";
 	}
-	
-	@RequestMapping(value = "/seeHistorical")
-	public String seeHistorical() {
-		return "seeHistorical";
+
+	@RequestMapping(value = "/actionSendIncidence")
+	public String actionSendIncidence() {
+		return "actionSendIncidence";
 	}
-	
-	@RequestMapping(value = "/createIncidence", method = RequestMethod.POST)
-	public String createIncidence() { // Aqui faltarian parametros
-		// Aqui faltaria leer los datos y ver si son validos
-		return ""; 
-		/* 
-		 * Aqui falta reenviar en funcion de si se ha hecho la incidencia de forma correcta
-		 * a una pagina de acierto o a una de fallo  en caso contrario
-		 */
+
+	@RequestMapping(value = "/formAgentHistory")
+	public String formAgentHistory() {
+		return "formAgentHistory";
 	}
+
+	@RequestMapping(value = "/actionAgentHistory")
+	public String actionAgentHistory() {
+		return "actionAgentHistory";
+	}
+
+	// @RequestMapping(value = "/createIncidence", method = RequestMethod.POST)
+	// public String createIncidence() { // Aqui faltarian parametros
+	// // Aqui faltaria leer los datos y ver si son validos
+	// return "";
+	// /*
+	// * Aqui falta reenviar en funcion de si se ha hecho la incidencia de forma
+	// * correcta a una pagina de acierto o a una de fallo en caso contrario
+	// */
+	// }
 }
