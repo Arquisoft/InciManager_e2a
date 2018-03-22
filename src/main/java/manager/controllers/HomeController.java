@@ -11,26 +11,6 @@ public class HomeController {
 		return "index";
 	}
 
-	@RequestMapping(value = "/formSendIncidence")
-	public String formSendIncidence() {
-		return "formSendIncidence";
-	}
-
-	@RequestMapping(value = "/actionSendIncidence")
-	public String actionSendIncidence() {
-		return "actionSendIncidence";
-	}
-
-	@RequestMapping(value = "/formAgentHistory")
-	public String formAgentHistory() {
-		return "formAgentHistory";
-	}
-
-	@RequestMapping(value = "/actionAgentHistory")
-	public String actionAgentHistory() {
-		return "actionAgentHistory";
-	}
-
 	// @RequestMapping(value = "/createIncidence", method = RequestMethod.POST)
 	// public String createIncidence() { // Aqui faltarian parametros
 	// // Aqui faltaria leer los datos y ver si son validos
