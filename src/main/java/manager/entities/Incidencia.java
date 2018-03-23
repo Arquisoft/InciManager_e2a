@@ -25,7 +25,7 @@ public class Incidencia {
 	Long id;
 
 	@ManyToOne
-	private User user;
+	private Agent user;
 
 	private String nombre;
 	private String descripcion;
@@ -51,7 +51,7 @@ public class Incidencia {
 	public Incidencia() {
 	}
 
-	public Incidencia(User user, String nombre, String descripcion, Location localizacion, Set<Etiqueta> etiquetas,
+	public Incidencia(Agent user, String nombre, String descripcion, Location localizacion, Set<Etiqueta> etiquetas,
 			Set<Campo> campos) {
 		super();
 		this.user = user;
@@ -72,11 +72,11 @@ public class Incidencia {
 		this.id = id;
 	}
 
-	public User getUser() {
+	public Agent getUser() {
 		return user;
 	}
 
-	public void setUser(User user) {
+	public void setUser(Agent user) {
 		this.user = user;
 	}
 

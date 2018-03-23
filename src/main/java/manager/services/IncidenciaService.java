@@ -10,7 +10,7 @@ import manager.entities.Etiqueta;
 import manager.entities.Incidencia;
 import manager.entities.IncidenciaMin;
 import manager.entities.Location;
-import manager.entities.User;
+import manager.entities.Agent;
 
 @Service
 public class IncidenciaService {
@@ -19,7 +19,7 @@ public class IncidenciaService {
 		Set<Etiqueta> etiquetas = cogerEtiquetas(incidencia.getEtiqueta());
 		Set<Campo> campos = cogerCampos(incidencia.getCampo());
 		Location location = new Location();
-		Incidencia inc = new Incidencia(new User(incidencia.getNombreUsuario(), incidencia.getContraseña()),
+		Incidencia inc = new Incidencia(new Agent(incidencia.getNombreUsuario(), incidencia.getContraseña()),
 				incidencia.getNombre(), incidencia.getDescripcion(), location, etiquetas, campos);
 		// determinar bbdd
 	}

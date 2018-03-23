@@ -3,17 +3,17 @@ package manager.entities;
 public class IncidenciaMin {
 	
 	private String nombreUsuario;
-	private String contraseña;
+	private String contrasena;
 	private String nombre;
 	private String descripcion;
 	private String etiqueta;
 	private String campo;
 	
-	public IncidenciaMin(String nombreUsuario, String contraseña, String nombre, String descripcion, String etiqueta,
+	public IncidenciaMin(String nombreUsuario, String contrasena, String nombre, String descripcion, String etiqueta,
 			String campo) {
 		super();
 		this.nombreUsuario = nombreUsuario;
-		this.contraseña = contraseña;
+		this.contrasena = contrasena;
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 		this.etiqueta = etiqueta;
@@ -33,11 +33,11 @@ public class IncidenciaMin {
 	}
 
 	public String getContraseña() {
-		return contraseña;
+		return contrasena;
 	}
 
 	public void setContraseña(String contraseña) {
-		this.contraseña = contraseña;
+		this.contrasena = contraseña;
 	}
 
 	public String getNombre() {

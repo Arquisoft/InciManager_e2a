@@ -23,7 +23,7 @@ public class Location {
 	private double longitud;
 
 	@OneToOne
-	private User user;
+	private Agent user;
 
 	public Location() {
 	}

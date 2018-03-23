@@ -5,7 +5,7 @@
 	<nav th:replace="fragments/nav" />
 	<div class="container" style="text-align: center">
 		<h2 th:text="#{welcome.message}"></h2>
-		<p>Universidad de Oviedo</p>
+		<p th:text="${resultado}"></p>
 		<p>Grupo de laboratorio E2</p>
 	</div>
 	<footer th:replace="fragments/footer" />
