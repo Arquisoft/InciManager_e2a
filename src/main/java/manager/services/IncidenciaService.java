@@ -26,6 +26,8 @@ public class IncidenciaService {
 
 	public Set<Campo> cogerCampos(String campo) {
 		Set<Campo> c = new HashSet<Campo>();
+		if (campo.equals(""))
+			return c;
 		String[] campos = campo.split(",");
 		for (String s : campos)
 			c.add(new Campo().setClave(s.split(":")[0]).setValor(s.split(":")[1]));
@@ -34,6 +36,9 @@ public class IncidenciaService {
 
 	public Set<Etiqueta> cogerEtiquetas(String etiqueta) {
 		Set<Etiqueta> e = new HashSet<Etiqueta>();
+		if (etiqueta.equals("")) {
+			return e;
+		}
 		String[] etiquetas = etiqueta.split(",");
 		for (String s : etiquetas)
 			e.add(new Etiqueta().setNombre(s));
