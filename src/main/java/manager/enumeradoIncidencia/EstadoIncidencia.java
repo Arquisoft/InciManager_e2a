@@ -1,4 +1,4 @@
-package enumeradoIncidencia;
+package manager.enumeradoIncidencia;
 
 public enum EstadoIncidencia {
 	

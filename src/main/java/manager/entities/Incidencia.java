@@ -1,4 +1,4 @@
-package entities;
+package manager.entities;
 
 import java.util.Date;
 import java.util.HashSet;
@@ -15,7 +15,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import enumeradoIncidencia.EstadoIncidencia;
+import manager.enumeradoIncidencia.EstadoIncidencia;
 
 @Entity
 public class Incidencia {
@@ -23,7 +23,7 @@ public class Incidencia {
 	@Id @GeneratedValue Long id;
 	
 	@ManyToOne
-	private Usuario user;
+	private User user;
 	
 	private String nombre;
 	private String descripcion;
@@ -56,11 +56,11 @@ public class Incidencia {
 		this.id = id;
 	}
 
-	public Usuario getUser() {
+	public User getUser() {
 		return user;
 	}
 
-	public void setUser(Usuario user) {
+	public void setUser(User user) {
 		this.user = user;
 	}
 

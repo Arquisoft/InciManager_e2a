@@ -1,4 +1,4 @@
-package entities;
+package manager.entities;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -10,7 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Usuario {
+public class User {
 	
 	@Id @GeneratedValue Long id;
 	
@@ -22,12 +22,12 @@ public class Usuario {
 	@OneToMany(mappedBy="user")
 	Set<Incidencia> incidencias = new HashSet<Incidencia>();
 	
-	public Usuario(String username, String password) {
+	public User(String username, String password) {
 		this.username = username;
 		this.password = password;
 	}
 	
-	public Usuario() {
+	public User() {
 		
 	}
 

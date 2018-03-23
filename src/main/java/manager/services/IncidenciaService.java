@@ -2,7 +2,7 @@ package manager.services;
 
 import org.springframework.stereotype.Service;
 
-import entities.Incidencia;
+import manager.entities.Incidencia;
 
 @Service
 public class IncidenciaService {
