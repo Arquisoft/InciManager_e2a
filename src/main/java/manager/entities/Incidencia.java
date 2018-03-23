@@ -9,7 +9,6 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
@@ -30,7 +29,8 @@ public class Incidencia {
 	
 	private String localizacion;
 	
-	private Set<String> etiquetas = new HashSet<String>();
+	@OneToMany(mappedBy="incidencia")
+	private Set<Etiqueta> etiquetas = new HashSet<Etiqueta>();
 	
 	@OneToMany(mappedBy="incidencia")
 	private Set<Campo> campos = new HashSet<Campo>(); //propiedad/valor
@@ -88,11 +88,11 @@ public class Incidencia {
 		this.localizacion = localizacion;
 	}
 
-	public Set<String> getEtiquetas() {
+	public Set<Etiqueta> getEtiquetas() {
 		return etiquetas;
 	}
 
-	public void setEtiquetas(Set<String> etiquetas) {
+	public void setEtiquetas(Set<Etiqueta> etiquetas) {
 		this.etiquetas = etiquetas;
 	}
 

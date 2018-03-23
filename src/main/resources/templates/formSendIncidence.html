@@ -6,7 +6,7 @@
         <nav th:replace="fragments/nav" />
         <div class="container">
             <h2>Enviar Incidencia</h2>
-            <form class="form-horizontal" method="post" action="/actionSendIncidence" th:object="${incidencia}">
+            <form class="form-horizontal" method="post" action="/formSendIncidence" th:object="${incidencia}">
                 <div class="form-group">
                     <label class="control-label col-sm-2" for="description">Nombre Usuario:</label>
                     <div class="col-sm-10">
@@ -23,7 +23,7 @@
                     <label class="control-label col-sm-2" for="description">Nombre de la incidencia:</label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control" name="nombre" placeholder="Fuego en el Parque San Francisco" required="true" />
-                        <span class="text-danger" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}">
+                        <span class="text-danger" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></span>
                     </div>
                 </div>
                 <div class="form-group">
@@ -31,21 +31,21 @@
                     <div class="col-sm-10">
                     	<textarea rows="10" cols="40" class="form-control" name="descripcion"
 					placeholder="Escriba aqui una descripcion detallada de la incidencia ..."></textarea>
-					<span class="text-danger" th:if="${#fields.hasErrors('descripcion')}" th:errors="*{descripcion}">
+					<span class="text-danger" th:if="${#fields.hasErrors('descripcion')}" th:errors="*{descripcion}"></span>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="control-label col-sm-2" for="description">Etiquetas:</label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control" name="etiquetas" placeholder="Fuego, Parque, Oviedo ..."/>
-                        <span class="text-danger" th:if="${#fields.hasErrors('etiquetas')}" th:errors="*{etiquetas}">
+                        <span class="text-danger" th:if="${#fields.hasErrors('etiquetas')}" th:errors="*{etiquetas}"></span>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="control-label col-sm-2" for="description">Campos:</label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control" name="campos" placeholder="Temperatura: 20ºC, Viento:54 km/h ..."/>
-                        <span class="text-danger" th:if="${#fields.hasErrors('campos')}" th:errors="*{campos}">
+                        <span class="text-danger" th:if="${#fields.hasErrors('campos')}" th:errors="*{campos}"></span>
                     </div>
                 </div>
                 
