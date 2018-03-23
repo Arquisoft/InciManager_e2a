@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -18,34 +19,49 @@ import manager.enumeradoIncidencia.EstadoIncidencia;
 
 @Entity
 public class Incidencia {
-	
-	@Id @GeneratedValue Long id;
-	
+
+	@Id
+	@GeneratedValue
+	Long id;
+
 	@ManyToOne
 	private User user;
-	
+
 	private String nombre;
 	private String descripcion;
-	
-	private String localizacion;
-	
-	@OneToMany(mappedBy="incidencia")
+
+	@OneToOne
+	private Location localizacion;
+
+	@OneToMany(mappedBy = "incidencia")
 	private Set<Etiqueta> etiquetas = new HashSet<Etiqueta>();
-	
-	@OneToMany(mappedBy="incidencia")
-	private Set<Campo> campos = new HashSet<Campo>(); //propiedad/valor
-	
+
+	@OneToMany(mappedBy = "incidencia")
+	private Set<Campo> campos = new HashSet<Campo>();
+
 	@Enumerated(EnumType.STRING)
 	private EstadoIncidencia estado;
-	
+
 	@Temporal(value = TemporalType.TIMESTAMP)
-	private Date caducidad;
-	
+	private Date fecha;
+
 	private String entidadAsignada;
 	private String comentarioOperario;
-	
+
 	public Incidencia() {
-		
+	}
+
+	public Incidencia(User user, String nombre, String descripcion, Location localizacion, Set<Etiqueta> etiquetas,
+			Set<Campo> campos) {
+		super();
+		this.user = user;
+		this.nombre = nombre;
+		this.descripcion = descripcion;
+		this.localizacion = localizacion;
+		this.etiquetas = etiquetas;
+		this.campos = campos;
+		this.estado = EstadoIncidencia.ABIERTA;
+		fecha = new Date();
 	}
 
 	public Long getId() {
@@ -80,11 +96,11 @@ public class Incidencia {
 		this.descripcion = descripcion;
 	}
 
-	public String getLocalizacion() {
+	public Location getLocalizacion() {
 		return localizacion;
 	}
 
-	public void setLocalizacion(String localizacion) {
+	public void setLocalizacion(Location localizacion) {
 		this.localizacion = localizacion;
 	}
 
@@ -113,11 +129,11 @@ public class Incidencia {
 	}
 
 	public Date getCaducidad() {
-		return caducidad;
+		return fecha;
 	}
 
 	public void setCaducidad(Date caducidad) {
-		this.caducidad = caducidad;
+		this.fecha = caducidad;
 	}
 
 	public String getEntidadAsignada() {
@@ -135,7 +151,4 @@ public class Incidencia {
 	public void setComentarioOperario(String comentarioOperario) {
 		this.comentarioOperario = comentarioOperario;
 	}
-	
-	
-
 }

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import manager.entities.Incidencia;
+import manager.entities.IncidenciaMin;
 import manager.validators.IncidenciaValidator;
 
 @Controller
@@ -20,12 +20,12 @@ public class IncidenciaController {
 	
 	@RequestMapping(value = "/formSendIncidence")
 	public String formSendIncidence(Model modelo) {
-		modelo.addAttribute("incidencia", new Incidencia());
+		modelo.addAttribute("incidenciaMin", new IncidenciaMin());
 		return "formSendIncidence";
 	}
 	
 	@RequestMapping(value = "/formSendIncidence", method = RequestMethod.POST)
-	public String setUser(@ModelAttribute @Validated Incidencia incidencia, 
+	public String setUser(@ModelAttribute @Validated IncidenciaMin incidencia, 
 			BindingResult result, Model modelo) {
 		
 		incidenciaValidator.validate(incidencia, result); 
