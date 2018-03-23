@@ -16,12 +16,27 @@ import manager.entities.User;
 public class IncidenciaService {
 
 	public void addIncidencia(IncidenciaMin incidencia) {
-		Set<Etiqueta> etiquetas = new HashSet<Etiqueta>();
-		Set<Campo> campos = new HashSet<Campo>();
+		Set<Etiqueta> etiquetas = cogerEtiquetas(incidencia.getEtiqueta());
+		Set<Campo> campos = cogerCampos(incidencia.getCampo());
 		Location location = new Location();
 		Incidencia inc = new Incidencia(new User(incidencia.getNombreUsuario(), incidencia.getContraseña()),
 				incidencia.getNombre(), incidencia.getDescripcion(), location, etiquetas, campos);
 		// determinar bbdd
 	}
 
+	public Set<Campo> cogerCampos(String campo) {
+		Set<Campo> c = new HashSet<Campo>();
+		String[] campos = campo.split(",");
+		for (String s : campos)
+			c.add(new Campo().setClave(s.split(":")[0]).setValor(s.split(":")[1]));
+		return c;
+	}
+
+	public Set<Etiqueta> cogerEtiquetas(String etiqueta) {
+		Set<Etiqueta> e = new HashSet<Etiqueta>();
+		String[] etiquetas = etiqueta.split(",");
+		for (String s : etiquetas)
+			e.add(new Etiqueta().setNombre(s));
+		return e;
+	}
 }

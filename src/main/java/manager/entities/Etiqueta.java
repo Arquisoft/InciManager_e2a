@@ -7,16 +7,18 @@ import javax.persistence.ManyToOne;
 
 @Entity
 public class Etiqueta {
-	
-	@Id @GeneratedValue Long id;
-	
+
+	@Id
+	@GeneratedValue
+	Long id;
+
 	@ManyToOne
 	private Incidencia incidencia;
-	
+
 	private String nombre;
-	
+
 	public Etiqueta() {
-		
+
 	}
 
 	public Incidencia getIncidencia() {
@@ -26,7 +28,13 @@ public class Etiqueta {
 	public void setIncidencia(Incidencia incidencia) {
 		this.incidencia = incidencia;
 	}
-	
-	
 
+	public String getNombre() {
+		return nombre;
+	}
+
+	public Etiqueta setNombre(String nombre) {
+		this.nombre = nombre;
+		return this;
+	}
 }

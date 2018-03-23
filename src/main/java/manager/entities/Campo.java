@@ -4,8 +4,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
 
 @Entity
 //@Table(uniqueConstraints=@UniqueConstraint(columnNames= {
@@ -50,18 +48,17 @@ public class Campo {
 		return clave;
 	}
 	
-	public void setClave(String clave) {
+	public Campo setClave(String clave) {
 		this.clave = clave;
+		return this;
 	}
 	
 	public String getValor() {
 		return valor;
 	}
 	
-	public void setValor(String valor) {
+	public Campo setValor(String valor) {
 		this.valor = valor;
+		return this;
 	}
-	
-	
-
 }
