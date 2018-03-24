@@ -51,10 +51,9 @@ public class Incidencia {
 	public Incidencia() {
 	}
 
-	public Incidencia(Agent user, String nombre, String descripcion, Location localizacion, Set<Etiqueta> etiquetas,
+	public Incidencia(String nombre, String descripcion, Location localizacion, Set<Etiqueta> etiquetas,
 			Set<Campo> campos) {
 		super();
-		this.user = user;
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 		this.localizacion = localizacion;
@@ -64,91 +63,122 @@ public class Incidencia {
 		fecha = new Date();
 	}
 
+	@Override
+	public String toString() {
+		StringBuilder kafka = new StringBuilder();
+		kafka.append(user.getUsername() + "@");
+		kafka.append(nombre + "@");
+		kafka.append(descripcion + "@");
+		kafka.append(localizacion.toString() + "@");
+		String tmp = "";
+		for (Etiqueta e : etiquetas)
+			tmp += e.toString() + "$";
+		kafka.append(tmp.substring(0, tmp.length() - 1) + "@");
+		tmp = "";
+		for (Campo c : campos)
+			tmp += c.toString() + "$";
+		kafka.append(tmp.substring(0, tmp.length() - 1) + "@");
+		kafka.append(fecha.getTime() + "@");
+		kafka.append(id);
+		return kafka.toString();
+	}
+
 	public Long getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public Incidencia setId(Long id) {
 		this.id = id;
+		return this;
 	}
 
 	public Agent getUser() {
 		return user;
 	}
 
-	public void setUser(Agent user) {
+	public Incidencia setUser(Agent user) {
 		this.user = user;
+		return this;
 	}
 
 	public String getNombre() {
 		return nombre;
 	}
 
-	public void setNombre(String nombre) {
+	public Incidencia setNombre(String nombre) {
 		this.nombre = nombre;
+		return this;
 	}
 
 	public String getDescripcion() {
 		return descripcion;
 	}
 
-	public void setDescripcion(String descripcion) {
+	public Incidencia setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
+		return this;
 	}
 
 	public Location getLocalizacion() {
 		return localizacion;
 	}
 
-	public void setLocalizacion(Location localizacion) {
+	public Incidencia setLocalizacion(Location localizacion) {
 		this.localizacion = localizacion;
+		return this;
 	}
 
 	public Set<Etiqueta> getEtiquetas() {
 		return etiquetas;
 	}
 
-	public void setEtiquetas(Set<Etiqueta> etiquetas) {
+	public Incidencia setEtiquetas(Set<Etiqueta> etiquetas) {
 		this.etiquetas = etiquetas;
+		return this;
 	}
 
 	public Set<Campo> getCampos() {
 		return campos;
 	}
 
-	public void setCampos(Set<Campo> campos) {
+	public Incidencia setCampos(Set<Campo> campos) {
 		this.campos = campos;
+		return this;
 	}
 
 	public EstadoIncidencia getEstado() {
 		return estado;
 	}
 
-	public void setEstado(EstadoIncidencia estado) {
+	public Incidencia setEstado(EstadoIncidencia estado) {
 		this.estado = estado;
+		return this;
 	}
 
-	public Date getCaducidad() {
+	public Date getFecha() {
 		return fecha;
 	}
 
-	public void setCaducidad(Date caducidad) {
-		this.fecha = caducidad;
+	public Incidencia setFecha(Date fecha) {
+		this.fecha = fecha;
+		return this;
 	}
 
 	public String getEntidadAsignada() {
 		return entidadAsignada;
 	}
 
-	public void setEntidadAsignada(String entidadAsignada) {
+	public Incidencia setEntidadAsignada(String entidadAsignada) {
 		this.entidadAsignada = entidadAsignada;
+		return this;
 	}
 
 	public String getComentarioOperario() {
 		return comentarioOperario;
 	}
 
-	public void setComentarioOperario(String comentarioOperario) {
+	public Incidencia setComentarioOperario(String comentarioOperario) {
 		this.comentarioOperario = comentarioOperario;
+		return this;
 	}
 }

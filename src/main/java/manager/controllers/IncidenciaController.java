@@ -49,5 +49,4 @@ public class IncidenciaController {
 		
 		return "list";
 	}
-
 }
