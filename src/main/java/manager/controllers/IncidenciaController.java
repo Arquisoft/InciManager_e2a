@@ -33,10 +33,6 @@ public class IncidenciaController {
 		if (result.hasErrors()) { 
 			return "formSendIncidence"; 
 		}
-		//user.setRole(rolesService.getRoles()[0]);
-		//usersService.addUser(user);
-		//securityService.autoLogin(user.getEmail(), user.getPasswordConfirm());
 		return "redirect:incidenciaEnviada";
 	}
-
 }

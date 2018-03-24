@@ -17,8 +17,6 @@ public class IncidenciaValidator implements Validator {
 	@Override
 	public void validate(Object target, Errors errors) {
 		IncidenciaMin incidencia = (IncidenciaMin) target;
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "nombreUsuario", "Error.empty");
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "contraseña", "Error.empty");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "nombre", "Error.empty");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "descripcion", "Error.empty");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "etiqueta", "Error.empty");
@@ -28,7 +26,7 @@ public class IncidenciaValidator implements Validator {
 			errors.rejectValue("nombre", "Error.sendIncidence.nombre.length");
 		}
 
-		if (incidencia.getDescripcion().length() < 5 || incidencia.getDescripcion().length() < 200) {
+		if (incidencia.getDescripcion().length() < 5 || incidencia.getDescripcion().length() > 200) {
 			errors.rejectValue("descripcion", "Error.sendIncidence.descripcion.length");
 		}
 	}

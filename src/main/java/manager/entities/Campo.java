@@ -91,6 +91,6 @@ public class Campo {
 
 	@Override
 	public String toString() {
-		return "Campo [clave=" + clave + ", valor=" + valor + "]";
+		return clave + ":" + valor;
 	}
 }

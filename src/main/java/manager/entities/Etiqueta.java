@@ -39,7 +39,7 @@ public class Etiqueta {
 	
 	@Override
 	public String toString() {
-		return "Etiqueta [nombre=" + nombre + "]";
+		return nombre;
 	}
 
 	@Override

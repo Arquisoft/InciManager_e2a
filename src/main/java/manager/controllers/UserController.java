@@ -20,16 +20,15 @@ import manager.dbManagement.AgentDAO;
 import manager.entities.Agent;
 import manager.util.AgentMin;
 
-
 @Controller
 public class UserController {
-	
+
 	@Autowired
 	private GetAgent getAgent;
-	
+
 	@Autowired
 	private AgentDAO ad;
-	
+
 	@RequestMapping(value = "/formAgentHistory")
 	public String formAgentHistory() {
 		return "formAgentHistory";
@@ -39,7 +38,7 @@ public class UserController {
 	public String actionAgentHistory() {
 		return "actionAgentHistory";
 	}
-	
+
 	@RequestMapping(value = "/index", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = {
 			MediaType.APPLICATION_JSON_VALUE })
 	public ResponseEntity<AgentMin> getAgent(@RequestBody Map<String, Object> payload) {
@@ -53,7 +52,6 @@ public class UserController {
 		return new ResponseEntity<AgentMin>(c, HttpStatus.OK);
 	}
 
-	
 	/**
 	 * Recibe los datos de login del usuario, busca si exite ese usuario y en caso
 	 * de exitir pasa a la siguiente página que muestra la informacion en caso
@@ -74,7 +72,6 @@ public class UserController {
 		Agent c = null;
 		if (login != null && password != null && kind != null) {
 			c = ad.getAgent(login, password, kind);
-			System.out.println(c);
 			if (c != null) {
 				session.setAttribute("agent", c);
 				model.addAttribute("resultado", "Bienvenid@ " + c.getNombre());
@@ -83,6 +80,4 @@ public class UserController {
 		}
 		return "error";
 	}
-
-
 }

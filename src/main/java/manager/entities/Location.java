@@ -87,6 +87,6 @@ public class Location {
 
 	@Override
 	public String toString() {
-		return "Location [latitud=" + latitud + ", longitud=" + longitud + ", citizen=" + user + "]";
+		return latitud + "$" + longitud;
 	}
 }

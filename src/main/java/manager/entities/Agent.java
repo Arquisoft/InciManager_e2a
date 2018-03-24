@@ -16,16 +16,18 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "agent")
 public class Agent {
-	
-	@Id @GeneratedValue Long id;
-	
-	//Propiedades del usuario
-	@Column(unique=true)
+
+	@Id
+	@GeneratedValue
+	Long id;
+
+	// Propiedades del usuario
+	@Column(unique = true)
 	private String nombreUsuario;
-	
+
 	@Column(name = "contrasena")
 	private String password;
-	
+
 	@NotNull
 	private String kind;
 
@@ -35,7 +37,7 @@ public class Agent {
 	@NotNull
 	@Column(unique = true)
 	private String dni;
-	
+
 	@NotNull
 	private String nombre;
 
@@ -45,24 +47,25 @@ public class Agent {
 	@NotNull
 	private String email;
 
-	
-	@OneToMany(mappedBy="user")
+	@OneToMany(mappedBy = "user")
 	Set<Incidencia> incidencias = new HashSet<Incidencia>();
-	
+
 	public Agent(String username, String password) {
-		this.nombreUsuario = username;
+		this(username);
 		this.password = password;
 	}
-	
+
+	public Agent(String username) {
+		this.nombreUsuario = username;
+	}
+
 	public Agent() {
-		
+
 	}
 
 	public Agent(String contrasena, String nombreUsuario, String kind, long kindCode, String dni, String nombre,
 			String apellidos, String email) {
-		super();
-		this.password = contrasena;
-		this.nombreUsuario = nombreUsuario;
+		this(nombreUsuario, contrasena);
 		this.kind = kind;
 		this.kindCode = kindCode;
 		this.dni = dni;
@@ -150,7 +153,5 @@ public class Agent {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
-	
 
 }
