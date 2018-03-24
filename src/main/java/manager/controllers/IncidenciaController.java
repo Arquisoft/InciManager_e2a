@@ -1,6 +1,10 @@
 package manager.controllers;
 
+
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -29,14 +33,21 @@ public class IncidenciaController {
 			BindingResult result, Model modelo) {
 		
 		incidenciaValidator.validate(incidencia, result); 
-		
 		if (result.hasErrors()) { 
 			return "formSendIncidence"; 
 		}
-		//user.setRole(rolesService.getRoles()[0]);
-		//usersService.addUser(user);
-		//securityService.autoLogin(user.getEmail(), user.getPasswordConfirm());
-		return "redirect:incidenciaEnviada";
+		
+		//Añadir Incidencia a la bbdd.
+		
+		return "incidenciaEnviada";
+	}
+	
+	@RequestMapping(value = "/list")
+	public String listIncidence(HttpSession session, Model modelo) {
+		//Agent agent = (Agent) session.getAttribute("agentIncidence");
+		System.out.println("wefawefawfwafawfawfafaf");
+		
+		return "list";
 	}
 
 }

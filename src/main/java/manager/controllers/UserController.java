@@ -30,16 +30,6 @@ public class UserController {
 	@Autowired
 	private AgentDAO ad;
 	
-	@RequestMapping(value = "/formAgentHistory")
-	public String formAgentHistory() {
-		return "formAgentHistory";
-	}
-
-	@RequestMapping(value = "/actionAgentHistory")
-	public String actionAgentHistory() {
-		return "actionAgentHistory";
-	}
-	
 	@RequestMapping(value = "/index", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = {
 			MediaType.APPLICATION_JSON_VALUE })
 	public ResponseEntity<AgentMin> getAgent(@RequestBody Map<String, Object> payload) {
@@ -74,7 +64,6 @@ public class UserController {
 		Agent c = null;
 		if (login != null && password != null && kind != null) {
 			c = ad.getAgent(login, password, kind);
-			System.out.println(c);
 			if (c != null) {
 				session.setAttribute("agent", c);
 				model.addAttribute("resultado", "Bienvenid@ " + c.getNombre());

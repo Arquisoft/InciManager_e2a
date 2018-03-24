@@ -28,7 +28,7 @@ public class IncidenciaValidator implements Validator {
 			errors.rejectValue("nombre", "Error.sendIncidence.nombre.length");
 		}
 
-		if (incidencia.getDescripcion().length() < 5 || incidencia.getDescripcion().length() < 200) {
+		if (incidencia.getDescripcion().length() < 5 || incidencia.getDescripcion().length() > 300) {
 			errors.rejectValue("descripcion", "Error.sendIncidence.descripcion.length");
 		}
 	}
