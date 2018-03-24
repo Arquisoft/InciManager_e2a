@@ -44,7 +44,7 @@ public class IncidenciaValidator implements Validator {
 			errors.rejectValue("campo", "Error.prohibido");
 		}
 		if (campoIncorrecto(incidencia.getCampo())) {
-			errors.reject("campo", "Error.campo");
+			errors.rejectValue("campo", "Error.campo");
 		}
 	}
 
@@ -53,14 +53,14 @@ public class IncidenciaValidator implements Validator {
 	}
 
 	private boolean campoIncorrecto(String cad) {
-		System.err.print(cad);
 		String[] campo = cad.split(",");
 		for (String s : campo) {
-			if (!s.contains(":"))
-				return true;
 			String[] tmp = s.split(":");
-			if (tmp.length>2)
+			if (!s.contains(":")) {
 				return true;
+			} else if (tmp.length > 2) {
+				return true;
+			}
 		}
 		return false;
 	}
