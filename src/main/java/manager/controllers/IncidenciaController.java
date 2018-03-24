@@ -1,8 +1,6 @@
 package manager.controllers;
 
-
 import java.util.List;
-import java.util.Set;
 
 import javax.servlet.http.HttpSession;
 
@@ -23,36 +21,41 @@ import manager.services.IncidenciaService;
 import manager.validators.IncidenciaValidator;
 
 @Controller
-public class IncidenciaController {
-	
-	@Autowired 
+public class IncidenciaController extends AbstractController {
+
+	@Autowired
 	private IncidenciaValidator incidenciaValidator;
-	
+
 	@Autowired
 	private IncidenciaService incidenciaService;
-	
+
 	@RequestMapping(value = "/formSendIncidence")
 	public String formSendIncidence(Model modelo) {
+		if (agent == null)
+			return "log";
 		modelo.addAttribute("incidenciaMin", new IncidenciaMin());
 		return "formSendIncidence";
 	}
-	
+
 	@RequestMapping(value = "/formSendIncidence", method = RequestMethod.POST)
-	public String setUser(@ModelAttribute @Validated IncidenciaMin incidencia, 
-			BindingResult result, Model modelo) {
-		
-		incidenciaValidator.validate(incidencia, result); 
-		if (result.hasErrors()) { 
-			return "formSendIncidence"; 
+	public String setUser(@ModelAttribute @Validated IncidenciaMin incidencia, BindingResult result, Model modelo) {
+		if (agent == null)
+			return "log";
+
+		incidenciaValidator.validate(incidencia, result);
+		if (result.hasErrors()) {
+			return "formSendIncidence";
 		}
-		
-		//Añadir Incidencia a la bbdd.
-		
+
+		// Añadir Incidencia a la bbdd.
+
 		return "incidenciaEnviada";
 	}
-	
+
 	@RequestMapping(value = "/list")
 	public String listIncidence(HttpSession session, Model modelo) {
+		if (agent == null)
+			return "log";
 		Agent agent = (Agent) session.getAttribute("agent");
 		List<Incidencia> incidencias = incidenciaService.getIncidencias(agent);
 		modelo.addAttribute("incidenciasList", incidencias);
