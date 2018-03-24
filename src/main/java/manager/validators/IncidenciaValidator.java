@@ -17,19 +17,51 @@ public class IncidenciaValidator implements Validator {
 	@Override
 	public void validate(Object target, Errors errors) {
 		IncidenciaMin incidencia = (IncidenciaMin) target;
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "nombreUsuario", "Error.empty");
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "contraseña", "Error.empty");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "nombre", "Error.empty");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "descripcion", "Error.empty");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "etiqueta", "Error.empty");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "campo", "Error.empty");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "latitud", "Error.empty");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "longitud", "Error.empty");
 
 		if (incidencia.getNombre().length() < 5 || incidencia.getNombre().length() > 24) {
 			errors.rejectValue("nombre", "Error.sendIncidence.nombre.length");
 		}
 
-		if (incidencia.getDescripcion().length() < 5 || incidencia.getDescripcion().length() > 300) {
+		if (incidencia.getDescripcion().length() < 5 || incidencia.getDescripcion().length() > 200) {
 			errors.rejectValue("descripcion", "Error.sendIncidence.descripcion.length");
 		}
+		if (valorProhibido(incidencia.getNombre())) {
+			errors.rejectValue("nombre", "Error.prohibido");
+		}
+		if (valorProhibido(incidencia.getDescripcion())) {
+			errors.rejectValue("descripcion", "Error.prohibido");
+		}
+		if (valorProhibido(incidencia.getEtiqueta())) {
+			errors.rejectValue("etiqueta", "Error.prohibido");
+		}
+		if (valorProhibido(incidencia.getCampo())) {
+			errors.rejectValue("campo", "Error.prohibido");
+		}
+		if (campoIncorrecto(incidencia.getCampo())) {
+			errors.reject("campo", "Error.campo");
+		}
+	}
+
+	private boolean valorProhibido(String cad) {
+		return cad.contains("$") || cad.contains("@");
+	}
+
+	private boolean campoIncorrecto(String cad) {
+		System.err.print(cad);
+		String[] campo = cad.split(",");
+		for (String s : campo) {
+			if (!s.contains(":"))
+				return true;
+			String[] tmp = s.split(":");
+			if (tmp.length>2)
+				return true;
+		}
+		return false;
 	}
 }
