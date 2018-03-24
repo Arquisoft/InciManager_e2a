@@ -16,6 +16,8 @@ import manager.entities.Location;
 
 @Service
 public class IncidenciaService {
+	
+	private Agent agent;
 
 	public void addIncidencia(IncidenciaMin incidencia) {
 		Set<Etiqueta> etiquetas = cogerEtiquetas(incidencia.getEtiqueta());
@@ -49,5 +51,13 @@ public class IncidenciaService {
 	public List<Incidencia> getIncidencias(Agent agent){
 		List<Incidencia> incidencias = new ArrayList<Incidencia>(agent.getIncidencias());
 		return incidencias;
+	}
+
+	public Agent getAgent() {
+		return agent;
+	}
+
+	public void setAgent(Agent agent) {
+		this.agent = agent;
 	}
 }

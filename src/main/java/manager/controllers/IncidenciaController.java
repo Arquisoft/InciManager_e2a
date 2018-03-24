@@ -21,7 +21,7 @@ import manager.services.IncidenciaService;
 import manager.validators.IncidenciaValidator;
 
 @Controller
-public class IncidenciaController extends AbstractController {
+public class IncidenciaController {
 
 	@Autowired
 	private IncidenciaValidator incidenciaValidator;
@@ -31,16 +31,18 @@ public class IncidenciaController extends AbstractController {
 
 	@RequestMapping(value = "/formSendIncidence")
 	public String formSendIncidence(Model modelo) {
-		if (agent == null)
+		if (incidenciaService.getAgent() == null) {
 			return "log";
+		}
 		modelo.addAttribute("incidenciaMin", new IncidenciaMin());
 		return "formSendIncidence";
 	}
 
 	@RequestMapping(value = "/formSendIncidence", method = RequestMethod.POST)
 	public String setUser(@ModelAttribute @Validated IncidenciaMin incidencia, BindingResult result, Model modelo) {
-		if (agent == null)
+		if (incidenciaService.getAgent() == null) {
 			return "log";
+		}
 
 		incidenciaValidator.validate(incidencia, result);
 		if (result.hasErrors()) {
@@ -54,8 +56,9 @@ public class IncidenciaController extends AbstractController {
 
 	@RequestMapping(value = "/list")
 	public String listIncidence(HttpSession session, Model modelo) {
-		if (agent == null)
+		if (incidenciaService.getAgent() == null) {
 			return "log";
+		}
 		Agent agent = (Agent) session.getAttribute("agent");
 		List<Incidencia> incidencias = incidenciaService.getIncidencias(agent);
 		modelo.addAttribute("incidenciasList", incidencias);
