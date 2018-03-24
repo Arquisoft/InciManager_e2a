@@ -15,7 +15,7 @@ public class Etiqueta {
 	@ManyToOne
 	private Incidencia incidencia;
 
-	private String nombre;
+	private String valor;
 
 	public Etiqueta() {
 	}
@@ -29,24 +29,24 @@ public class Etiqueta {
 	}
 
 	public String getNombre() {
-		return nombre;
+		return valor;
 	}
 
 	public Etiqueta setNombre(String nombre) {
-		this.nombre = nombre;
+		this.valor = nombre;
 		return this;
 	}
 	
 	@Override
 	public String toString() {
-		return nombre;
+		return valor;
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((nombre == null) ? 0 : nombre.hashCode());
+		result = prime * result + ((valor == null) ? 0 : valor.hashCode());
 		return result;
 	}
 
@@ -59,10 +59,10 @@ public class Etiqueta {
 		if (getClass() != obj.getClass())
 			return false;
 		Etiqueta other = (Etiqueta) obj;
-		if (nombre == null) {
-			if (other.nombre != null)
+		if (valor == null) {
+			if (other.valor != null)
 				return false;
-		} else if (!nombre.equals(other.nombre))
+		} else if (!valor.equals(other.valor))
 			return false;
 		return true;
 	}
