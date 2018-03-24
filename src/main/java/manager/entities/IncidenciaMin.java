@@ -6,6 +6,8 @@ public class IncidenciaMin {
 	private String descripcion;
 	private String etiqueta;
 	private String campo;
+	private Double latitud;
+	private Double longitud;
 
 	public IncidenciaMin(String nombre, String descripcion, String etiqueta, String campo) {
 		super();
@@ -49,5 +51,21 @@ public class IncidenciaMin {
 
 	public void setCampo(String campo) {
 		this.campo = campo;
+	}
+
+	public Double getLatitud() {
+		return latitud;
+	}
+
+	public void setLatitud(Double latitud) {
+		this.latitud = latitud;
+	}
+
+	public Double getLongitud() {
+		return longitud;
+	}
+
+	public void setLongitud(Double longitud) {
+		this.longitud = longitud;
 	}
 }

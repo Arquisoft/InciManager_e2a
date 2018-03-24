@@ -44,9 +44,7 @@ public class IncidenciaController {
 	
 	@RequestMapping(value = "/list")
 	public String listIncidence(HttpSession session, Model modelo) {
-		//Agent agent = (Agent) session.getAttribute("agentIncidence");
-		System.out.println("wefawefawfwafawfawfafaf");
-		
+		//Agent agent = (Agent) session.getAttribute("agentIncidence");	
 		return "list";
 	}
 }

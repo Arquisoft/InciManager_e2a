@@ -43,6 +43,4 @@ public class AgentDAODummy implements AgentDAO {
 		dummyAgent = toUpdate;
 		return dummyAgent;
 	}
-
-	
 }

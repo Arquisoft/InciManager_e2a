@@ -2,7 +2,8 @@
 <html lang="en">
 <head th:replace="fragments/head" />
 <body>
-	<!-- Barra de Navegación superior -->
+	<script
+		src="https://maps.googleapis.com/maps/api/js?libraries=places&amp;key=AIzaSyC8NaOdLLGoUMued8G5Yux5pmgHVZRs8Fk"></script>
 	<nav th:replace="fragments/nav" />
 	<div class="container">
 		<h2>Enviar Incidencia</h2>
@@ -47,6 +48,24 @@
 						th:errors="*{campo}"></span>
 				</div>
 			</div>
+			<div class="form-group">
+				<label class="control-label col-sm-2" for="description">Latitud:
+					(No recomendado cambiarlo)</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" name="latitud"
+						placeholder="47.2141" id="latitud" /> <span class="text-danger"
+						th:if="${#fields.hasErrors('latitud')}" th:errors="*{latitud}"></span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-sm-2" for="description">Longitud:
+					(No recomendado cambiarlo)</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" name="longitud"
+						placeholder="-38.9826" id="longitud" /> <span class="text-danger"
+						th:if="${#fields.hasErrors('longitud')}" th:errors="*{longitud}"></span>
+				</div>
+			</div>
 
 			<div class="form-group">
 				<div class="col-sm-offset-2 col-sm-10">
@@ -55,7 +74,21 @@
 			</div>
 		</form>
 	</div>
+	<script type="text/javascript">
+		function initGeolocation() {
+			if (navigator.geolocation) {
+				navigator.geolocation.getCurrentPosition(success);
+			} else {
+				alert("Sorry, your browser does not support geolocation services.");
+			}
+		}
 
+		function success(position) {
+			document.getElementById('latitud').value = position.coords.latitude;
+			document.getElementById('longitud').value = position.coords.longitude;
+		}
+		initGeolocation();
+	</script>
 	<footer th:replace="fragments/footer" />
 </body>
 </html>
