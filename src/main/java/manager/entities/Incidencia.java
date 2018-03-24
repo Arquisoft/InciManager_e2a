@@ -78,7 +78,8 @@ public class Incidencia {
 		for (Campo c : campos)
 			tmp += c.toString() + "$";
 		kafka.append(tmp.substring(0, tmp.length() - 1) + "@");
-		kafka.append(fecha.getTime());
+		kafka.append(fecha.getTime() + "@");
+		kafka.append(id);
 		return kafka.toString();
 	}
 

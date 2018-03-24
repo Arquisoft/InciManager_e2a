@@ -29,5 +29,21 @@ public class IncidenciaValidator implements Validator {
 		if (incidencia.getDescripcion().length() < 5 || incidencia.getDescripcion().length() > 200) {
 			errors.rejectValue("descripcion", "Error.sendIncidence.descripcion.length");
 		}
+		if (valorProhibido(incidencia.getNombre())) {
+			errors.rejectValue("nombre", "Error.prohibido");
+		}
+		if (valorProhibido(incidencia.getDescripcion())) {
+			errors.rejectValue("descripcion", "Error.prohibido");
+		}
+		if (valorProhibido(incidencia.getEtiqueta())) {
+			errors.rejectValue("etiqueta", "Error.prohibido");
+		}
+		if (valorProhibido(incidencia.getCampo())) {
+			errors.rejectValue("campo", "Error.prohibido");
+		}
+	}
+
+	private boolean valorProhibido(String cad) {
+		return cad.contains("$") || cad.contains("@");
 	}
 }

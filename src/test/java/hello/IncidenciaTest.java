@@ -27,10 +27,10 @@ public class IncidenciaTest {
 		inc.setUser(new Agent("Juan")).setNombre("Fuego en Oviedo")
 				.setDescripcion("El parque San Francisco está quemándose a causa de un cigarrillo mal apagado")
 				.setLocalizacion(new Location(43.3616142, -5.8506767)).setEtiquetas(etiquetas).setCampos(campos)
-				.setFecha(fecha);
-		assertEquals(
-				"Juan@Fuego en Oviedo@El parque San Francisco está quemándose a causa de un cigarrillo mal apagado"
-						+ "@43.3616142$-5.8506767@Fuego$Parque@Temperatura:Alta$Fuego:Extremo@" + fecha.getTime(),
+				.setFecha(fecha).setId((long) 1);
+		assertEquals("Juan@Fuego en Oviedo@El parque San Francisco está quemándose a causa de un cigarrillo mal apagado"
+				+ "@43.3616142$-5.8506767@Fuego$Parque@Temperatura:Alta$Fuego:Extremo@" + fecha.getTime() + "@1",
 				inc.toString());
+		System.err.println(inc);
 	}
 }
