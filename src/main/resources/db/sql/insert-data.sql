@@ -4,10 +4,10 @@ INSERT INTO agent VALUES (3, '1234', 'raul', 'Sensor', 3, '525695K', 'Raul', 'Ru
 
 INSERT INTO incidencia VALUES (1,1,'Fuego', 'Fuego en Parque San Francisco', 'abierta', '2018-03-24', null, null);
 INSERT INTO incidencia VALUES (2,1,'Inundacion', 'Inundación en la Universidad de Oviedo', 'abierta', '2018-03-22', null, null);
-INSERT INTO incidencia VALUES (3,1,'Atasco', 'Atasco en la autopista', 'abierta', '2018-03-20', null, null);
-INSERT INTO incidencia VALUES (4,2,'Fuego', 'Fuego en Parque San Francisco', 'abierta', '2018-03-24', null, null);
-INSERT INTO incidencia VALUES (5,2,'Inundacion', 'Inundación en la Universidad de Oviedo', 'abierta', '2018-03-22', null, null);
-INSERT INTO incidencia VALUES (6,2,'Atasco', 'Atasco en la autopista', 'abierta', '2018-03-20', null, null);
+INSERT INTO incidencia VALUES (3,1,'Atasco', 'Atasco en la autopista', 'cerrada', '2018-03-20', null, null);
+INSERT INTO incidencia VALUES (4,2,'Fuego', 'Fuego en Parque San Francisco', 'cerrada', '2018-03-24', null, null);
+INSERT INTO incidencia VALUES (5,2,'Inundacion', 'Inundación en la Universidad de Oviedo', 'cerrada', '2018-03-22', null, null);
+INSERT INTO incidencia VALUES (6,2,'Atasco', 'Atasco en la autopista', 'cerrada', '2018-03-20', null, null);
 INSERT INTO incidencia VALUES (7,3,'Fuego', 'Fuego en Parque San Francisco', 'abierta', '2018-03-24', null, null);
 INSERT INTO incidencia VALUES (8,3,'Inundacion', 'Inundación en la Universidad de Oviedo', 'abierta', '2018-03-22', null, null);
 INSERT INTO incidencia VALUES (9,3,'Atasco', 'Atasco en la autopista', 'abierta', '2018-03-20', null, null);

@@ -39,8 +39,9 @@ public class Incidencia {
 	@OneToMany(mappedBy = "incidencia")
 	private Set<Campo> campos = new HashSet<Campo>();
 
-	@Enumerated(EnumType.STRING)
-	private EstadoIncidencia estado;
+	//@Enumerated(EnumType.STRING)
+	//private EstadoIncidencia estado;
+	private String estado;
 
 	@Temporal(value = TemporalType.TIMESTAMP)
 	private Date fecha;
@@ -59,7 +60,8 @@ public class Incidencia {
 		this.localizacion = localizacion;
 		this.etiquetas = etiquetas;
 		this.campos = campos;
-		this.estado = EstadoIncidencia.ABIERTA;
+		//this.estado = EstadoIncidencia.ABIERTA;
+		//this.estado = "ABIERTA";
 		fecha = new Date();
 	}
 
@@ -146,11 +148,11 @@ public class Incidencia {
 		return this;
 	}
 
-	public EstadoIncidencia getEstado() {
+	public String getEstado() {
 		return estado;
 	}
 
-	public Incidencia setEstado(EstadoIncidencia estado) {
+	public Incidencia setEstado(String estado) {
 		this.estado = estado;
 		return this;
 	}

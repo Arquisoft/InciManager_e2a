@@ -154,4 +154,13 @@ public class Agent {
 		this.email = email;
 	}
 
+	@Override
+	public String toString() {
+		return "Agent [nombreUsuario=" + nombreUsuario + ", password=" + password + ", kind=" + kind + ", kindCode="
+				+ kindCode + ", dni=" + dni + ", nombre=" + nombre + ", apellidos=" + apellidos + ", email=" + email
+				+ "]";
+	}
+	
+	
+
 }

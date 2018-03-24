@@ -1,10 +1,13 @@
 package manager.services;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import org.springframework.stereotype.Service;
 
+import manager.entities.Agent;
 import manager.entities.Campo;
 import manager.entities.Etiqueta;
 import manager.entities.Incidencia;
@@ -41,5 +44,10 @@ public class IncidenciaService {
 		for (String s : etiquetas)
 			e.add(new Etiqueta().setNombre(s));
 		return e;
+	}
+	
+	public List<Incidencia> getIncidencias(Agent agent){
+		List<Incidencia> incidencias = new ArrayList<Incidencia>(agent.getIncidencias());
+		return incidencias;
 	}
 }

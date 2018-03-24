@@ -4,7 +4,9 @@ import org.springframework.stereotype.Repository;
 
 import manager.dbManagement.AgentDAO;
 import manager.entities.Agent;
+import manager.entities.Incidencia;
 
+import java.util.HashSet;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -34,7 +36,15 @@ public class AgentDAODummy implements AgentDAO {
 				.setParameter(1, login).setParameter(2, password).setParameter(3, kind).getResultList();
 		if (agent.isEmpty())
 			return null;
-		return agent.get(0);
+		else {
+			Long id = agent.get(0).getId();
+			List<Incidencia> inci = entityManager
+					.createQuery("from Incidencia where id_user = ?1")
+					.setParameter(1, id).getResultList();
+			agent.get(0).setIncidencias(new HashSet<Incidencia>(inci));
+			return agent.get(0);
+		}
+		
 	}
 
 	@Override
@@ -44,5 +54,7 @@ public class AgentDAODummy implements AgentDAO {
 		return dummyAgent;
 	}
 
+	
+	
 	
 }

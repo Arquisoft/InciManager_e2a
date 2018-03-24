@@ -1,6 +1,9 @@
 package manager.controllers;
 
 
+import java.util.List;
+import java.util.Set;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +16,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import manager.entities.Agent;
+import manager.entities.Incidencia;
 import manager.entities.IncidenciaMin;
+import manager.services.IncidenciaService;
 import manager.validators.IncidenciaValidator;
 
 @Controller
@@ -21,6 +27,9 @@ public class IncidenciaController {
 	
 	@Autowired 
 	private IncidenciaValidator incidenciaValidator;
+	
+	@Autowired
+	private IncidenciaService incidenciaService;
 	
 	@RequestMapping(value = "/formSendIncidence")
 	public String formSendIncidence(Model modelo) {
@@ -44,9 +53,9 @@ public class IncidenciaController {
 	
 	@RequestMapping(value = "/list")
 	public String listIncidence(HttpSession session, Model modelo) {
-		//Agent agent = (Agent) session.getAttribute("agentIncidence");
-		System.out.println("wefawefawfwafawfawfafaf");
-		
+		Agent agent = (Agent) session.getAttribute("agent");
+		List<Incidencia> incidencias = incidenciaService.getIncidencias(agent);
+		modelo.addAttribute("incidenciasList", incidencias);
 		return "list";
 	}
 }
