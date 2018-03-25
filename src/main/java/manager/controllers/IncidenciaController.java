@@ -62,4 +62,10 @@ public class IncidenciaController {
 		modelo.addAttribute("incidenciasList", incidencias);
 		return "list";
 	}
+	
+	@RequestMapping(value = "/logout")
+	public String logout(HttpSession session, Model modelo) {
+		incidenciaService.setAgent(null);
+		return "log";
+	}
 }
