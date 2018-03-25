@@ -4,9 +4,8 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
@@ -15,8 +14,6 @@ import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import manager.enumeradoIncidencia.EstadoIncidencia;
-
 @Entity
 public class Incidencia {
 
@@ -24,23 +21,23 @@ public class Incidencia {
 	@GeneratedValue
 	Long id;
 
-	@ManyToOne
-	private Agent user;
+	@ManyToOne(cascade = { CascadeType.ALL })
+	private Agent agent;
 
 	private String nombre;
 	private String descripcion;
 
-	@OneToOne
-	private Location localizacion;
+	@OneToOne(cascade = { CascadeType.ALL })
+	private Location location;
 
-	@OneToMany(mappedBy = "incidencia")
+	@OneToMany(mappedBy = "incidencia", cascade = { CascadeType.ALL })
 	private Set<Etiqueta> etiquetas = new HashSet<Etiqueta>();
 
-	@OneToMany(mappedBy = "incidencia")
+	@OneToMany(mappedBy = "incidencia", cascade = { CascadeType.ALL })
 	private Set<Campo> campos = new HashSet<Campo>();
 
-	//@Enumerated(EnumType.STRING)
-	//private EstadoIncidencia estado;
+	// @Enumerated(EnumType.STRING)
+	// private EstadoIncidencia estado;
 	private String estado;
 
 	@Temporal(value = TemporalType.TIMESTAMP)
@@ -57,21 +54,21 @@ public class Incidencia {
 		super();
 		this.nombre = nombre;
 		this.descripcion = descripcion;
-		this.localizacion = localizacion;
+		this.location = localizacion;
 		this.etiquetas = etiquetas;
 		this.campos = campos;
-		//this.estado = EstadoIncidencia.ABIERTA;
-		//this.estado = "ABIERTA";
+		// this.estado = EstadoIncidencia.ABIERTA;
+		// this.estado = "ABIERTA";
 		fecha = new Date();
 	}
 
 	@Override
 	public String toString() {
 		StringBuilder kafka = new StringBuilder();
-		kafka.append(user.getUsername() + "@");
+		kafka.append(agent.getUsername() + "@");
 		kafka.append(nombre + "@");
 		kafka.append(descripcion + "@");
-		kafka.append(localizacion.toString() + "@");
+		kafka.append(location.toString() + "@");
 		String tmp = "";
 		for (Etiqueta e : etiquetas)
 			tmp += e.toString() + "$";
@@ -94,12 +91,12 @@ public class Incidencia {
 		return this;
 	}
 
-	public Agent getUser() {
-		return user;
+	public Agent getAgent() {
+		return agent;
 	}
 
-	public Incidencia setUser(Agent user) {
-		this.user = user;
+	public Incidencia setAgent(Agent agent) {
+		this.agent = agent;
 		return this;
 	}
 
@@ -122,11 +119,11 @@ public class Incidencia {
 	}
 
 	public Location getLocalizacion() {
-		return localizacion;
+		return location;
 	}
 
 	public Incidencia setLocalizacion(Location localizacion) {
-		this.localizacion = localizacion;
+		this.location = localizacion;
 		return this;
 	}
 

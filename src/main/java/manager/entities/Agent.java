@@ -3,51 +3,43 @@ package manager.entities;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
-import javax.xml.bind.annotation.XmlRootElement;
 
-@XmlRootElement
 @Entity
-@Table(name = "agent")
 public class Agent {
 
 	@Id
 	@GeneratedValue
 	Long id;
 
-	// Propiedades del usuario
 	@Column(unique = true)
+	@NotNull
 	private String nombreUsuario;
 
-	@Column(name = "contrasena")
+	@NotNull
 	private String password;
 
 	@NotNull
 	private String kind;
 
-	@NotNull
 	private Long kindCode;
 
-	@NotNull
 	@Column(unique = true)
 	private String dni;
 
-	@NotNull
 	private String nombre;
 
-	@NotNull
 	private String apellidos;
 
-	@NotNull
 	private String email;
 
-	@OneToMany(mappedBy = "user")
+	@OneToMany(mappedBy = "agent", cascade = { CascadeType.ALL })
 	Set<Incidencia> incidencias = new HashSet<Incidencia>();
 
 	public Agent(String username, String password) {
@@ -59,14 +51,18 @@ public class Agent {
 		this.nombreUsuario = username;
 	}
 
+	public Agent(String username, String password, String kind) {
+		this(username, password);
+		this.kind = kind;
+	}
+
 	public Agent() {
 
 	}
 
 	public Agent(String contrasena, String nombreUsuario, String kind, long kindCode, String dni, String nombre,
 			String apellidos, String email) {
-		this(nombreUsuario, contrasena);
-		this.kind = kind;
+		this(nombreUsuario, contrasena, kind);
 		this.kindCode = kindCode;
 		this.dni = dni;
 		this.nombre = nombre;
@@ -160,7 +156,5 @@ public class Agent {
 				+ kindCode + ", dni=" + dni + ", nombre=" + nombre + ", apellidos=" + apellidos + ", email=" + email
 				+ "]";
 	}
-	
-	
 
 }

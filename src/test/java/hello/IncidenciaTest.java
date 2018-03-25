@@ -24,7 +24,7 @@ public class IncidenciaTest {
 		Set<Campo> campos = new HashSet<Campo>();
 		campos.add(new Campo().setClave("Fuego").setValor("Extremo"));
 		campos.add(new Campo().setClave("Temperatura").setValor("Alta"));
-		inc.setUser(new Agent("Juan")).setNombre("Fuego en Oviedo")
+		inc.setAgent(new Agent("Juan")).setNombre("Fuego en Oviedo")
 				.setDescripcion("El parque San Francisco está quemándose a causa de un cigarrillo mal apagado")
 				.setLocalizacion(new Location(43.3616142, -5.8506767)).setEtiquetas(etiquetas).setCampos(campos)
 				.setFecha(fecha).setId((long) 1);

@@ -28,56 +28,56 @@ public class MinToIncidenceTest {
 	@Test
 	public void CogerEtiquetas1test() {
 		String cad = "luz,fuego,destrucción";
-		Set<Etiqueta> etiquetas = incidenciaService.cogerEtiquetas(cad);
+		Set<Etiqueta> etiquetas = incidenciaService.cogerEtiquetas(cad, null);
 		assertEquals(3, etiquetas.size());
 	}
 
 	@Test
 	public void CogerEtiquetas2test() {
 		String cad = "luz,luz,destrucción"; // Repetimos 2 etiquetas para comprobar que no se guarda una de ellas
-		Set<Etiqueta> etiquetas = incidenciaService.cogerEtiquetas(cad);
+		Set<Etiqueta> etiquetas = incidenciaService.cogerEtiquetas(cad, null);
 		assertEquals(2, etiquetas.size());
 	}
 
 	@Test
 	public void CogerEtiquetas3test() {
 		String cad = "fuego";
-		Set<Etiqueta> etiquetas = incidenciaService.cogerEtiquetas(cad);
+		Set<Etiqueta> etiquetas = incidenciaService.cogerEtiquetas(cad, null);
 		assertEquals(1, etiquetas.size());
 	}
 
 	@Test
 	public void CogerEtiquetas4test() {
 		String cad = "";
-		Set<Etiqueta> etiquetas = incidenciaService.cogerEtiquetas(cad);
+		Set<Etiqueta> etiquetas = incidenciaService.cogerEtiquetas(cad, null);
 		assertTrue(etiquetas.isEmpty());
 	}
 
 	@Test
 	public void CogerCampos1test() {
 		String cam = "Mundo:Ruina,Temperatura:9000";
-		Set<Campo> campos = incidenciaService.cogerCampos(cam);
+		Set<Campo> campos = incidenciaService.cogerCampos(cam, null);
 		assertEquals(2, campos.size());
 	}
 
 	@Test
 	public void CogerCampos2test() {
 		String cam = "Mundo:Ruina,Mundo:Feliz"; // La clave se repite por lo que solo habrá un campo
-		Set<Campo> campos = incidenciaService.cogerCampos(cam);
+		Set<Campo> campos = incidenciaService.cogerCampos(cam, null);
 		assertEquals(1, campos.size());
 	}
 
 	@Test
 	public void CogerCampos3test() {
 		String cam = "Mundo:Ruina,Temperatura:Ruina"; // El valor si puede coincidir
-		Set<Campo> campos = incidenciaService.cogerCampos(cam);
+		Set<Campo> campos = incidenciaService.cogerCampos(cam, null);
 		assertEquals(2, campos.size());
 	}
 
 	@Test
 	public void CogerCampos4test() {
 		String cam = "";
-		Set<Campo> campos = incidenciaService.cogerCampos(cam);
+		Set<Campo> campos = incidenciaService.cogerCampos(cam, null);
 		assertTrue(campos.isEmpty());
 	}
 }

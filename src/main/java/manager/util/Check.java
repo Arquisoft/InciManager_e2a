@@ -9,7 +9,7 @@ public class Check {
 			+ "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
 
 	/**
-	 * Valida el email con una expresion reglar
+	 * Valida el email con una expresion regular
 	 * 
 	 * @param email
 	 *            email que se quiere validar
@@ -21,7 +21,5 @@ public class Check {
 
 		Matcher matcher = pattern.matcher(email);
 		return matcher.matches();
-
 	}
-
 }

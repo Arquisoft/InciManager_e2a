@@ -1,21 +1,21 @@
 package manager.entities;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 @Entity
-// @Table(uniqueConstraints=@UniqueConstraint(columnNames= {
-// "incidencia", "clave"
-// }))
+// @Table(uniqueConstraints = @UniqueConstraint(columnNames = { "incidencia",
+// "clave" }))
 public class Campo {
 
 	@Id
 	@GeneratedValue
 	Long id;
 
-	@ManyToOne
+	@ManyToOne(cascade = { CascadeType.ALL })
 	private Incidencia incidencia;
 
 	private String clave;
@@ -42,8 +42,9 @@ public class Campo {
 		return incidencia;
 	}
 
-	public void setIncidencia(Incidencia incidencia) {
+	public Campo setIncidencia(Incidencia incidencia) {
 		this.incidencia = incidencia;
+		return this;
 	}
 
 	public String getClave() {

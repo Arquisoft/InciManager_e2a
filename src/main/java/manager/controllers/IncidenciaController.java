@@ -48,9 +48,7 @@ public class IncidenciaController {
 		if (result.hasErrors()) {
 			return "formSendIncidence";
 		}
-
-		// Añadir Incidencia a la bbdd.
-
+		incidenciaService.addIncidencia(incidencia);
 		return "incidenciaEnviada";
 	}
 

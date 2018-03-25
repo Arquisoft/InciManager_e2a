@@ -1,5 +1,6 @@
 package manager.entities;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -12,7 +13,7 @@ public class Etiqueta {
 	@GeneratedValue
 	Long id;
 
-	@ManyToOne
+	@ManyToOne (cascade = {CascadeType.ALL})
 	private Incidencia incidencia;
 
 	private String valor;
@@ -24,8 +25,9 @@ public class Etiqueta {
 		return incidencia;
 	}
 
-	public void setIncidencia(Incidencia incidencia) {
+	public Etiqueta setIncidencia(Incidencia incidencia) {
 		this.incidencia = incidencia;
+		return this;
 	}
 
 	public String getNombre() {
