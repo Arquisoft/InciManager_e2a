@@ -26,3 +26,4 @@ hs_err_pid*
 .project
 /target/*
 /target/
+/hsqldb-2.4.0/*
