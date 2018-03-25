@@ -27,7 +27,7 @@ Estos son los autores de la versión del proyecto del curso 2017-2018.
 
 ## Arrancar el proyecto
 
-1. Descargaremos Kafka 2.11 de este [enlace] (http://apache.rediris.es/kafka/1.0.1/kafka_2.11-1.0.1.tgz)
+1. Descargaremos Kafka 2.11 pinchando en el siguiente [enlace](http://apache.rediris.es/kafka/1.0.1/kafka_2.11-1.0.1.tgz)
 
 2. Abrimos una ventana de comandos y realizamos la siguiente orden:
   * 2.a Windows: bin\windows\zookeeper-server-start.bat config\zookeeper.properties
@@ -45,6 +45,14 @@ Estos son los autores de la versión del proyecto del curso 2017-2018.
   * 6.a Enviar una nueva incidencia
   * 6.b Ver todas las incidencias enviadas por el usuario
   
+6.a En el caso de que queramos enviar una incidencia deberemos seguir una serie de normas:
+* Está prohibido el uso de los símbolos "@" y "$" (Utilizados para mandar la información a través de Apache Kafka).
+* El título y la descripción deberán tener un tamaño coherente (Entre 5 y 24/200 caracteres).
+* Las etiquetas se separarán por comas sin dejar espacios.
+* Los campos se separarán por comas sin dejar espacios y cada campo seguirá la forma Clave:Valor.
+* La localización se registrará automáticamente, sin embargo, será posible cambiarla a mano siempre y cuando siga siendo un número decimal.
+  
 ### Usuarios por defecto
-* Login: juan (Agent: Person), pedro (Agent: Entity), raul (Agent: Sensor)
+* Login: juan, pedro, raul
 * Password: 1234
+* King: Person, Entity, Sensor (Respectivamente)
