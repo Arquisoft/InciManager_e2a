@@ -28,7 +28,7 @@ public class Incidencia {
 	private String descripcion;
 
 	@OneToOne(cascade = { CascadeType.ALL })
-	private Location location;
+	public Location location;
 
 	@OneToMany(mappedBy = "incidencia", cascade = { CascadeType.ALL })
 	private Set<Etiqueta> etiquetas = new HashSet<Etiqueta>();

@@ -24,7 +24,12 @@
 				</thead>
 				<tbody>
 					<tr th:each="incidencia : ${incidenciasList}">
-						<td th:text="${incidencia.nombre}">Nombre</td>
+						<td><div>
+							<div>
+								<a th:href="${'/details/' + incidencia.id}" th:text="${incidencia.nombre}" >Nombre</a>
+							</div>						
+							</div></td>
+						
 						<td th:text="${incidencia.descripcion}">Descripción</td>
 						<td th:text="${incidencia.estado}">Estado</td>
 					</tr>
