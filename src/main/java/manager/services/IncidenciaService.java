@@ -42,9 +42,8 @@ public class IncidenciaService {
 				.setEtiquetas(etiquetas).setCampos(campos).setAgent(a).setEstado("ABIERTA").setFecha(new Date());
 		a.getIncidencias().add(inc);
 		agentsRepository.save(a);
-		// Incidencia fin = incidenciasRepository.sacarIdDeIncidencia(inc.getAgent(),
-		// inc.getNombre(),
-		// inc.getDescripcion(), inc.getLocalizacion());
+//		Incidencia fin = incidenciasRepository.sacarIdDeIncidencia(inc.getAgent(), inc.getNombre(),
+//				inc.getDescripcion(), inc.getLocalizacion());
 		String s = inc.toString();
 		kafkaProducer.send("incidencias", s);
 		// incidenciasRepository.save(inc);
