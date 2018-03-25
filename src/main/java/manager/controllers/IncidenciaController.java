@@ -63,20 +63,16 @@ public class IncidenciaController {
 		modelo.addAttribute("incidenciasList", incidencias);
 		return "list";
 	}
-	
-<<<<<<< HEAD
+
 	@RequestMapping(value = "/logout")
 	public String logout(HttpSession session, Model modelo) {
 		incidenciaService.setAgent(null);
 		return "log";
 	}
-=======
+
 	@RequestMapping("/details/{id}")
 	public String getDetail(Model model, @PathVariable Long id) {
 		model.addAttribute("incidence", incidenciaService.getIncidencia(id));
 		return "details";
 	}
-	
-	
->>>>>>> be5513edcd991144419e5d2d38422462f231490d
 }

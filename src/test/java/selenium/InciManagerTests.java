@@ -196,12 +196,10 @@ public class InciManagerTests {
 		 List<WebElement> incidencias = SeleniumUtils.EsperaCargaPagina(driver, "free",
 		 "//tbody/tr", PO_View.getTimeout());
 		 // Comprobamos que solo hay un usuario con ese email
-		assertEquals("Titulo-incidencia2", incidencias.get(0).getText().split(" ")[0]);
-		assertEquals("Descripcion-incidencia2", incidencias.get(0).getText().split(" ")[1]);
-		assertEquals("ABIERTA", incidencias.get(0).getText().split(" ")[2]);
-		assertEquals("Titulo-incidencia", incidencias.get(1).getText().split(" ")[0]);
-		assertEquals("Descripcion-incidencia", incidencias.get(1).getText().split(" ")[1]);
-		assertEquals("ABIERTA", incidencias.get(1).getText().split(" ")[2]);
+		assertEquals("Titulo-incidencia2" + "\n" + "Descripcion-incidencia2", incidencias.get(0).getText().split(" ")[0]);
+		assertEquals("ABIERTA", incidencias.get(0).getText().split(" ")[1]);
+		assertEquals("Titulo-incidencia" + "\n" + "Descripcion-incidencia", incidencias.get(1).getText().split(" ")[0]);
+		assertEquals("ABIERTA", incidencias.get(1).getText().split(" ")[1]);
 	}
 
 	// * 3.1 [LisUsrVal] Acceso al listado de usuarios desde un usuario en sesión.
