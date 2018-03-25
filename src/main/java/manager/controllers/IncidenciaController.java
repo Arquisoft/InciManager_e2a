@@ -57,7 +57,7 @@ public class IncidenciaController {
 		if (incidenciaService.getAgent() == null) {
 			return "log";
 		}
-		Agent agent = (Agent) session.getAttribute("agent");
+		Agent agent = incidenciaService.getAgent();
 		List<Incidencia> incidencias = incidenciaService.getIncidencias(agent);
 		modelo.addAttribute("incidenciasList", incidencias);
 		return "list";

@@ -58,7 +58,7 @@ public class Incidencia {
 		this.etiquetas = etiquetas;
 		this.campos = campos;
 		// this.estado = EstadoIncidencia.ABIERTA;
-		// this.estado = "ABIERTA";
+		this.estado = "ABIERTA";
 		fecha = new Date();
 	}
 

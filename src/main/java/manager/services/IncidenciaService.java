@@ -37,10 +37,10 @@ public class IncidenciaService {
 		Location location = new Location(incidencia.getLatitud(), incidencia.getLongitud()).setIncidencia(inc);
 		Agent a = agentsRepository.findAgent(agent.getUsername(), agent.getPassword(), agent.getKind());
 		inc.setNombre(incidencia.getNombre()).setDescripcion(incidencia.getDescripcion()).setLocalizacion(location)
-				.setEtiquetas(etiquetas).setCampos(campos).setAgent(a);
+				.setEtiquetas(etiquetas).setCampos(campos).setAgent(a).setEstado("ABIERTA");
 		a.getIncidencias().add(inc);
 		agentsRepository.save(a);
-		// incidenciasRepository.save(inc);
+		//incidenciasRepository.save(inc);
 	}
 
 	public Set<Campo> cogerCampos(String campo, Incidencia incidencia) {
@@ -65,7 +65,7 @@ public class IncidenciaService {
 	}
 
 	public List<Incidencia> getIncidencias(Agent agent) {
-		List<Incidencia> incidencias = new ArrayList<Incidencia>(agent.getIncidencias());
+		List<Incidencia> incidencias = incidenciasRepository.incidenciasAgente(agent.getId());
 		return incidencias;
 	}
 
