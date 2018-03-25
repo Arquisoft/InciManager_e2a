@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -63,9 +64,19 @@ public class IncidenciaController {
 		return "list";
 	}
 	
+<<<<<<< HEAD
 	@RequestMapping(value = "/logout")
 	public String logout(HttpSession session, Model modelo) {
 		incidenciaService.setAgent(null);
 		return "log";
 	}
+=======
+	@RequestMapping("/details/{id}")
+	public String getDetail(Model model, @PathVariable Long id) {
+		model.addAttribute("incidence", incidenciaService.getIncidencia(id));
+		return "details";
+	}
+	
+	
+>>>>>>> be5513edcd991144419e5d2d38422462f231490d
 }

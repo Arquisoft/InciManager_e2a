@@ -1,6 +1,7 @@
 package manager.services;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -37,7 +38,7 @@ public class IncidenciaService {
 		Location location = new Location(incidencia.getLatitud(), incidencia.getLongitud()).setIncidencia(inc);
 		Agent a = agentsRepository.findAgent(agent.getUsername(), agent.getPassword(), agent.getKind());
 		inc.setNombre(incidencia.getNombre()).setDescripcion(incidencia.getDescripcion()).setLocalizacion(location)
-				.setEtiquetas(etiquetas).setCampos(campos).setAgent(a).setEstado("ABIERTA");
+				.setEtiquetas(etiquetas).setCampos(campos).setAgent(a).setEstado("ABIERTA").setFecha(new Date());
 		a.getIncidencias().add(inc);
 		agentsRepository.save(a);
 		//incidenciasRepository.save(inc);
@@ -67,6 +68,15 @@ public class IncidenciaService {
 	public List<Incidencia> getIncidencias(Agent agent) {
 		List<Incidencia> incidencias = incidenciasRepository.incidenciasAgente(agent.getId());
 		return incidencias;
+	}
+	
+	/**
+	 * Devuelve la incidencia por id
+	 * @param id
+	 * @return
+	 */
+	public Incidencia getIncidencia(Long id) {
+		return incidenciasRepository.findOne(id);
 	}
 
 	public Agent getAgent() {
