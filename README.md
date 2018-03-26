@@ -1,3 +1,7 @@
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/62678ef56d424b1cb7b719e3d279ba67)](https://www.codacy.com/app/jelabra/InciManager_e2a?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Arquisoft/Agents_e2a&amp;utm_campaign=Badge_Grade)
+[![Build Status](https://travis-ci.org/Arquisoft/Agents_e2a.svg?branch=master)](https://travis-ci.org/Arquisoft/InciManager_e2a)
+[![codecov](https://codecov.io/gh/Arquisoft/Agents_e2a/branch/master/graph/badge.svg)](https://codecov.io/gh/Arquisoft/InciManager_e2a)
+
 # InciManagement #
 
 Toda la documentacion en informacion de este modulo y el proyecto al que pertenece se encuentra en este otro [repositorio](https://github.com/Arquisoft/inci_e2a)
