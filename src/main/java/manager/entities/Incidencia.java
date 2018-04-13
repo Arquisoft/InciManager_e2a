@@ -61,6 +61,19 @@ public class Incidencia {
 		this.estado = "ABIERTA";
 		fecha = new Date();
 	}
+	
+	public Incidencia(String nombre, String descripcion, Location localizacion, Set<Etiqueta> etiquetas,
+			Set<Campo> campos, Date fecha, String estado) {
+		super();
+		this.nombre = nombre;
+		this.descripcion = descripcion;
+		this.location = localizacion;
+		this.etiquetas = etiquetas;
+		this.campos = campos;
+		// this.estado = EstadoIncidencia.ABIERTA;
+		this.estado = estado;
+		this.fecha = fecha;
+	}
 
 	@Override
 	public String toString() {

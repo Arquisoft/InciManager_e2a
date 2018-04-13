@@ -33,4 +33,53 @@ public class IncidenciaTest {
 				inc.toString());
 		System.err.println(inc);
 	}
+	
+	@Test
+	public void newIncidencia() {
+		Agent agente = new Agent();
+		String nombreIncidencia = "Fuego en Casa";
+		String descripcion = "El fuego ha sido causado por un mechero";
+		Location location = new Location();
+		
+		Set<Etiqueta> etiquetas = new HashSet<Etiqueta>();
+		etiquetas.add(new Etiqueta());
+		etiquetas.add(new Etiqueta());
+		Set<Campo> campos = new HashSet<Campo>();
+		campos.add(new Campo());
+		
+		Date date = new Date();
+		String estado = "ABIERTA";
+		
+		String comentarioOperario = "Entidad en proceso de resolución";
+		String entidadAsignada = "Agente";
+		
+		Long id = (long) 1;
+		
+		Incidencia inc = new Incidencia();
+		
+		inc.setNombre(nombreIncidencia);
+		inc.setDescripcion(descripcion);
+		inc.setLocalizacion(location);
+		inc.setEtiquetas(etiquetas);
+		inc.setCampos(campos);
+		inc.setFecha(date);
+		inc.setEstado(estado);
+		inc.setAgent(agente);
+		inc.setComentarioOperario(comentarioOperario);
+		inc.setEntidadAsignada(entidadAsignada);
+		inc.setId(id);
+		
+		
+		assertEquals(nombreIncidencia, inc.getNombre());
+		assertEquals(descripcion, inc.getDescripcion());
+		assertEquals(location, inc.getLocalizacion());
+		assertEquals(etiquetas, inc.getEtiquetas());
+		assertEquals(campos, inc.getCampos());
+		assertEquals(date, inc.getFecha());
+		assertEquals(estado, inc.getEstado());
+		assertEquals(agente, inc.getAgent());
+		assertEquals(comentarioOperario, inc.getComentarioOperario());
+		assertEquals(entidadAsignada, inc.getEntidadAsignada());
+		assertEquals(id, inc.getId());
+	}
 }
