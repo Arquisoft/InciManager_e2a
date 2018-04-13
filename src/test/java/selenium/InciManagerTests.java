@@ -38,7 +38,7 @@ public class InciManagerTests {
 	public void setUp() {
 		// Antes de cada prueba se navega al URL home de la aplicaciónn
 		driver.navigate().to(URL);
-		//driver.manage().timeouts().implicitlyWait(4, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(4, TimeUnit.SECONDS);
 	}
 
 	// Después de cada prueba se borran las cookies del navegador
