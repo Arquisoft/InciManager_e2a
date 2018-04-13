@@ -3,6 +3,7 @@ package selenium;
 import static org.junit.Assert.assertEquals;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import org.junit.*;
 import org.openqa.selenium.*;
@@ -37,6 +38,7 @@ public class InciManagerTests {
 	public void setUp() {
 		// Antes de cada prueba se navega al URL home de la aplicaciónn
 		driver.navigate().to(URL);
+		//driver.manage().timeouts().implicitlyWait(4, TimeUnit.SECONDS);
 	}
 
 	// Después de cada prueba se borran las cookies del navegador
