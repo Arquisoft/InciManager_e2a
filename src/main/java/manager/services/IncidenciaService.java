@@ -34,16 +34,17 @@ public class IncidenciaService {
 
 	public void addIncidencia(IncidenciaMin incidencia) {
 		Incidencia inc = new Incidencia();
+		Date date = new Date();
 		Set<Etiqueta> etiquetas = cogerEtiquetas(incidencia.getEtiqueta(), inc);
 		Set<Campo> campos = cogerCampos(incidencia.getCampo(), inc);
 		Location location = new Location(incidencia.getLatitud(), incidencia.getLongitud()).setIncidencia(inc);
 		Agent a = agentsRepository.findAgent(agent.getUsername(), agent.getPassword(), agent.getKind());
 		inc.setNombre(incidencia.getNombre()).setDescripcion(incidencia.getDescripcion()).setLocalizacion(location)
-				.setEtiquetas(etiquetas).setCampos(campos).setAgent(a).setEstado("ABIERTA").setFecha(new Date());
+				.setEtiquetas(etiquetas).setCampos(campos).setAgent(a).setEstado("ABIERTA").setFecha(date);
 		a.getIncidencias().add(inc);
 		agentsRepository.save(a);	
-		incidenciasRepository.save(inc);
-		kafkaProducer.send("incidencias", inc.toString());
+		Incidencia i = incidenciasRepository.findByDateAndAgent(date, a.getId());
+		kafkaProducer.send("incidencias", i.toString());
 	}
 
 	public Set<Campo> cogerCampos(String campo, Incidencia incidencia) {
