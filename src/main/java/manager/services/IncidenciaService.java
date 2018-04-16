@@ -41,12 +41,9 @@ public class IncidenciaService {
 		inc.setNombre(incidencia.getNombre()).setDescripcion(incidencia.getDescripcion()).setLocalizacion(location)
 				.setEtiquetas(etiquetas).setCampos(campos).setAgent(a).setEstado("ABIERTA").setFecha(new Date());
 		a.getIncidencias().add(inc);
-		agentsRepository.save(a);
-//		Incidencia fin = incidenciasRepository.sacarIdDeIncidencia(inc.getAgent(), inc.getNombre(),
-//				inc.getDescripcion(), inc.getLocalizacion());
-		String s = inc.toString();
-		kafkaProducer.send("incidencias", s);
-		// incidenciasRepository.save(inc);
+		agentsRepository.save(a);	
+		incidenciasRepository.save(inc);
+		kafkaProducer.send("incidencias", inc.toString());
 	}
 
 	public Set<Campo> cogerCampos(String campo, Incidencia incidencia) {
