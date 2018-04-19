@@ -37,7 +37,7 @@ public class InciManagerTests {
 	@Before
 	public void setUp() {
 		// Antes de cada prueba se navega al URL home de la aplicaciónn
-		driver.navigate().to(URL);
+		driver.get(URL);
 		driver.manage().timeouts().implicitlyWait(4, TimeUnit.SECONDS);
 	}
 
@@ -45,7 +45,7 @@ public class InciManagerTests {
 	@After
 	public void tearDown() {
 		driver.manage().deleteAllCookies();
-		driver.navigate().to(URL + "/logout");
+		driver.get(URL + "/logout");
 	}
 
 	@BeforeClass
@@ -59,14 +59,14 @@ public class InciManagerTests {
 
 	@Test
 	public void test1IntentoDeRellenarFormularioSinIniciarSesion() {
-		driver.navigate().to(URL + "/formSendIncidence");
+		driver.get(URL + "/formSendIncidence");
 		// Comprobamos que nos vamos a la pantalla de login
 		SeleniumUtils.EsperaCargaPagina(driver, "text", "Sistema de participacion ciudadana", PO_View.getTimeout());
 	}
 
 	@Test
 	public void test2IntentoDeListarIncidencias() {
-		driver.navigate().to(URL + "/list");
+		driver.get(URL + "/list");
 		// Comprobamos que nos vamos a la pantalla de login
 		SeleniumUtils.EsperaCargaPagina(driver, "text", "Sistema de participacion ciudadana", PO_View.getTimeout());
 	}
