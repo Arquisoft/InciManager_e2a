@@ -13,7 +13,7 @@ public class Etiqueta {
 	@GeneratedValue
 	Long id;
 
-	@ManyToOne (cascade = {CascadeType.ALL})
+	@ManyToOne //(cascade = {CascadeType.ALL})
 	private Incidencia incidencia;
 
 	private String valor;

@@ -11,6 +11,7 @@ import manager.entities.Campo;
 import manager.entities.Etiqueta;
 import manager.entities.Incidencia;
 import manager.entities.Location;
+import manager.entities.Status;
 
 public class IncidenciaTest {
 
@@ -48,7 +49,7 @@ public class IncidenciaTest {
 		campos.add(new Campo());
 		
 		Date date = new Date();
-		String estado = "ABIERTA";
+		Status estado = Status.ABIERTO;
 		
 		String comentarioOperario = "Entidad en proceso de resolución";
 		String entidadAsignada = "Agente";

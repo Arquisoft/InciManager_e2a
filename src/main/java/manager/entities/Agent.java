@@ -6,6 +6,7 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
@@ -39,7 +40,7 @@ public class Agent {
 
 	private String email;
 
-	@OneToMany(mappedBy = "agent", cascade = { CascadeType.ALL })
+	@OneToMany(fetch = FetchType.EAGER, mappedBy="agent")
 	Set<Incidencia> incidencias = new HashSet<Incidencia>();
 
 	public Agent(String username, String password) {

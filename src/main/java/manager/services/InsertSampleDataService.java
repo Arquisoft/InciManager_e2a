@@ -12,7 +12,7 @@ public class InsertSampleDataService {
 	@Autowired
 	private AgentsService agentsService;
 
-	@PostConstruct
+	//@PostConstruct
 	public void init() {
 		Agent agent1 = new Agent("juan", "1234", "Person");
 		Agent agent2 = new Agent("pedro", "1234", "Entity");

@@ -21,7 +21,7 @@ public class Location {
 	@NotNull
 	private double longitud;
 
-	@OneToOne (cascade = {CascadeType.ALL})
+	@OneToOne //(cascade = {CascadeType.ALL})
 	private Incidencia incidencia;
 
 	public Location() {

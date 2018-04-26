@@ -5,7 +5,10 @@ import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
@@ -21,30 +24,34 @@ public class Incidencia {
 	@GeneratedValue
 	Long id;
 
-	@ManyToOne(cascade = { CascadeType.ALL })
+	@ManyToOne//(cascade = { CascadeType.ALL })
 	private Agent agent;
 
 	private String nombre;
+	@Column(length=1000)
 	private String descripcion;
 
 	@OneToOne(cascade = { CascadeType.ALL })
 	public Location location;
 
-	@OneToMany(mappedBy = "incidencia", cascade = { CascadeType.ALL })
+	@OneToMany(mappedBy = "incidencia")//, cascade = { CascadeType.ALL })
 	private Set<Etiqueta> etiquetas = new HashSet<Etiqueta>();
 
-	@OneToMany(mappedBy = "incidencia", cascade = { CascadeType.ALL })
+	@OneToMany(mappedBy = "incidencia")//, cascade = { CascadeType.ALL })
 	private Set<Campo> campos = new HashSet<Campo>();
 
-	// @Enumerated(EnumType.STRING)
-	// private EstadoIncidencia estado;
-	private String estado;
+	@Enumerated(EnumType.STRING)
+	private Status estado;
 
 	@Temporal(value = TemporalType.TIMESTAMP)
 	private Date fecha;
 
 	private String entidadAsignada;
+	
+	@Column(length=1000)
 	private String comentarioOperario;
+	
+	//private TipoCampos tipoIncidencia;
 
 	public Incidencia() {
 	}
@@ -58,7 +65,7 @@ public class Incidencia {
 		this.etiquetas = etiquetas;
 		this.campos = campos;
 		// this.estado = EstadoIncidencia.ABIERTA;
-		this.estado = "ABIERTA";
+		this.estado = Status.ABIERTO;
 		fecha = new Date();
 	}
 	
@@ -71,7 +78,7 @@ public class Incidencia {
 		this.etiquetas = etiquetas;
 		this.campos = campos;
 		// this.estado = EstadoIncidencia.ABIERTA;
-		this.estado = estado;
+		this.estado = Status.ABIERTO;
 		this.fecha = fecha;
 	}
 
@@ -158,11 +165,11 @@ public class Incidencia {
 		return this;
 	}
 
-	public String getEstado() {
+	public Status getEstado() {
 		return estado;
 	}
 
-	public Incidencia setEstado(String estado) {
+	public Incidencia setEstado(Status estado) {
 		this.estado = estado;
 		return this;
 	}

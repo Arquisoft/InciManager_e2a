@@ -15,15 +15,28 @@ public class Campo {
 	@GeneratedValue
 	Long id;
 
-	@ManyToOne(cascade = { CascadeType.ALL })
+	@ManyToOne//(cascade = { CascadeType.ALL })
 	private Incidencia incidencia;
 
 	private String clave;
 	private String valor;
+	
+	private TipoCampos tipo;
 
 	public Campo() {
 
 	}
+
+	
+	public TipoCampos getTipo() {
+		return tipo;
+	}
+
+
+	public void setTipo(TipoCampos tipo) {
+		this.tipo = tipo;
+	}
+
 
 	public Campo(String clave, String valor) {
 		this.clave = clave;

@@ -14,6 +14,7 @@ import manager.entities.Etiqueta;
 import manager.entities.Incidencia;
 import manager.entities.IncidenciaMin;
 import manager.entities.Location;
+import manager.entities.Status;
 import manager.kafka.KafkaProducer;
 import manager.repository.AgentsRepository;
 import manager.repository.IncidenciasRepository;
@@ -40,7 +41,7 @@ public class IncidenciaService {
 		Location location = new Location(incidencia.getLatitud(), incidencia.getLongitud()).setIncidencia(inc);
 		Agent a = agentsRepository.findAgent(agent.getUsername(), agent.getPassword(), agent.getKind());
 		inc.setNombre(incidencia.getNombre()).setDescripcion(incidencia.getDescripcion()).setLocalizacion(location)
-				.setEtiquetas(etiquetas).setCampos(campos).setAgent(a).setEstado("ABIERTA").setFecha(date);
+				.setEtiquetas(etiquetas).setCampos(campos).setAgent(a).setEstado(Status.ABIERTO).setFecha(date);
 		a.getIncidencias().add(inc);
 		agentsRepository.save(a);	
 		Incidencia i = incidenciasRepository.findByDateAndAgent(date, a.getId());
