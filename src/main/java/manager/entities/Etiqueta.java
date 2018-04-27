@@ -44,7 +44,7 @@ public class Etiqueta {
 
 	@Override
 	public String toString() {
-		return "Etiqueta [id=" + id + ", valor=" + valor + "]";
+		return valor;
 	}
 
 	public Long getId() {

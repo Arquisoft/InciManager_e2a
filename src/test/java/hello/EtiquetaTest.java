@@ -36,7 +36,7 @@ public class EtiquetaTest {
 		assertEquals(i, e.getIncidencia());
 		assertEquals(valor, e.getNombre());
 		
-		assertEquals("Etiqueta [id=" + id + ", valor=" + valor + "]", e.toString());
+		assertEquals(valor, e.toString());
 		
 	}
 
