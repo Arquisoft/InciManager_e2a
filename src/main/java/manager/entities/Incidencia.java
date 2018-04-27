@@ -24,7 +24,7 @@ public class Incidencia {
 	@GeneratedValue
 	Long id;
 
-	@ManyToOne//(cascade = { CascadeType.ALL })
+	@ManyToOne(cascade = { CascadeType.ALL })
 	private Agent agent;
 
 	private String nombre;
@@ -34,10 +34,10 @@ public class Incidencia {
 	@OneToOne(cascade = { CascadeType.ALL })
 	public Location location;
 
-	@OneToMany(mappedBy = "incidencia")//, cascade = { CascadeType.ALL })
+	@OneToMany(mappedBy = "incidencia", cascade = { CascadeType.ALL })
 	private Set<Etiqueta> etiquetas = new HashSet<Etiqueta>();
 
-	@OneToMany(mappedBy = "incidencia")//, cascade = { CascadeType.ALL })
+	@OneToMany(mappedBy = "incidencia", cascade = { CascadeType.ALL })
 	private Set<Campo> campos = new HashSet<Campo>();
 
 	@Enumerated(EnumType.STRING)

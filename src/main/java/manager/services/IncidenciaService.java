@@ -17,7 +17,10 @@ import manager.entities.Location;
 import manager.entities.Status;
 import manager.kafka.KafkaProducer;
 import manager.repository.AgentsRepository;
+import manager.repository.CamposRepository;
+import manager.repository.EtiquetasRepository;
 import manager.repository.IncidenciasRepository;
+import manager.repository.LocationRepository;
 
 @Service
 public class IncidenciaService {
@@ -31,19 +34,32 @@ public class IncidenciaService {
 	private AgentsRepository agentsRepository;
 
 	@Autowired
+	private EtiquetasRepository etiquetasRepository;
+
+	@Autowired
+	private CamposRepository camposRepository;
+
+	@Autowired
+	private LocationRepository locationRepository;
+
+	@Autowired
 	private KafkaProducer kafkaProducer;
 
 	public void addIncidencia(IncidenciaMin incidencia) {
 		Incidencia inc = new Incidencia();
 		Date date = new Date();
 		Set<Etiqueta> etiquetas = cogerEtiquetas(incidencia.getEtiqueta(), inc);
+		Agent a = agentsRepository.findAgent(agent.getUsername(), agent.getPassword(), agent.getKind());
 		Set<Campo> campos = cogerCampos(incidencia.getCampo(), inc);
 		Location location = new Location(incidencia.getLatitud(), incidencia.getLongitud()).setIncidencia(inc);
-		Agent a = agentsRepository.findAgent(agent.getUsername(), agent.getPassword(), agent.getKind());
 		inc.setNombre(incidencia.getNombre()).setDescripcion(incidencia.getDescripcion()).setLocalizacion(location)
 				.setEtiquetas(etiquetas).setCampos(campos).setAgent(a).setEstado(Status.ABIERTO).setFecha(date);
+		incidenciasRepository.save(inc);
+		etiquetasRepository.save(etiquetas);
+		camposRepository.save(campos);
+		locationRepository.save(location);
 		a.getIncidencias().add(inc);
-		agentsRepository.save(a);	
+		agentsRepository.save(a);
 		Incidencia i = incidenciasRepository.findByDateAndAgent(date, a.getId());
 		kafkaProducer.send("incidencias", i.toString());
 	}
