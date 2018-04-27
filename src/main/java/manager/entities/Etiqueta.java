@@ -38,12 +38,14 @@ public class Etiqueta {
 		return this;
 	}
 	
+	
+	
+	
+
 	@Override
 	public String toString() {
-		return valor;
+		return "Etiqueta [id=" + id + ", valor=" + valor + "]";
 	}
-	
-	
 
 	public Long getId() {
 		return id;

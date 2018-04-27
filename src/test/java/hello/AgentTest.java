@@ -61,6 +61,9 @@ public class AgentTest {
 		assertEquals(apellidos, agent.getApellidos());
 		assertEquals(email, agent.getEmail());
 		
+		assertEquals("Agent [nombreUsuario=" + nombreUsuario + ", password=" + password + ", kind=" + kind + ", kindCode="
+				+ kindcode + ", dni=" + dni + ", nombre=" + nombre + ", apellidos=" + apellidos + ", email=" + email
+				+ "]", agent.toString());
 	}
 
 }

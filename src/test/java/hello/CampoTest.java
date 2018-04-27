@@ -42,6 +42,8 @@ public class CampoTest {
 		assertEquals(valor, campo.getValor());
 		assertEquals(tipo, campo.getTipo());
 		
+		assertEquals(clave + ":" + valor, campo.toString());
+		
 	}
 
 }
