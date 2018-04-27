@@ -1,7 +1,5 @@
 package manager.controllers;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,7 +21,7 @@ public class AgentController {
 	private AgentsService agentsService;
 
 	@RequestMapping(value = "/index", method = RequestMethod.POST)
-	public String showInfo(HttpSession session, @RequestParam String login, @RequestParam String password,
+	public String showInfo(@RequestParam String login, @RequestParam String password,
 			@RequestParam String kind, Model model) {
 		Agent a = agentsService.findAgent(login, password, kind);
 		incidenciaService.setAgent(a);
