@@ -7,6 +7,7 @@ import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import manager.entities.Agent;
 import manager.entities.Campo;
@@ -45,23 +46,33 @@ public class IncidenciaService {
 	@Autowired
 	private KafkaProducer kafkaProducer;
 
-	public void addIncidencia(IncidenciaMin incidencia) {
+	@Transactional
+	public Incidencia addIncidencia(IncidenciaMin incidencia) {
 		Incidencia inc = new Incidencia();
+		
 		Date date = new Date();
+		
 		Set<Etiqueta> etiquetas = cogerEtiquetas(incidencia.getEtiqueta(), inc);
+		
 		Agent a = agentsRepository.findAgent(agent.getUsername(), agent.getPassword(), agent.getKind());
 		Set<Campo> campos = cogerCampos(incidencia.getCampo(), inc);
 		Location location = new Location(incidencia.getLatitud(), incidencia.getLongitud()).setIncidencia(inc);
 		inc.setNombre(incidencia.getNombre()).setDescripcion(incidencia.getDescripcion()).setLocalizacion(location)
 				.setEtiquetas(etiquetas).setCampos(campos).setAgent(a).setEstado(Status.ABIERTO).setFecha(date);
+
+		
 		incidenciasRepository.save(inc);
 		etiquetasRepository.save(etiquetas);
 		camposRepository.save(campos);
 		locationRepository.save(location);
 		a.getIncidencias().add(inc);
 		agentsRepository.save(a);
+
 		Incidencia i = incidenciasRepository.findByDateAndAgent(date, a.getId());
+		//Enviamos por kafka
 		kafkaProducer.send("incidencias", i.toString());
+		
+		return inc;
 	}
 
 	public Set<Campo> cogerCampos(String campo, Incidencia incidencia) {
@@ -90,12 +101,6 @@ public class IncidenciaService {
 		return incidencias;
 	}
 
-	/**
-	 * Devuelve la incidencia por id
-	 * 
-	 * @param id
-	 * @return
-	 */
 	public Incidencia getIncidencia(Long id) {
 		return incidenciasRepository.findOne(id);
 	}
@@ -107,4 +112,5 @@ public class IncidenciaService {
 	public void setAgent(Agent agent) {
 		this.agent = agent;
 	}
+	
 }
