@@ -45,14 +45,14 @@ public class BdTest {
 		
 		Agent agent = new Agent();
 		
-		String nombreUsuario = "pepe";
+		String nombreUsuario = "Dani123";
 		String password = "123";
-		String kind = "Entity";	
+		String kind = "Person";	
 		Long kindcode = 1L;
-		String dni = "12345678P";
-		String nombre = "Pelayo";
-		String apellidos = "García";
-		String email = "pelayo@uniovi.es";
+		String dni = "345567678G";
+		String nombre = "Daniel";
+		String apellidos = "Suarez";
+		String email = "danisua@uniovi.es";
 		
 		Incidencia i1 = new Incidencia();
 		Incidencia i2 = new Incidencia();
@@ -72,8 +72,13 @@ public class BdTest {
 		agentService.addAgent(agent);
 		Agent a = agentsRepository.findAgent(nombreUsuario, password, kind);
 		assertNotNull(a);
-		agentsRepository.delete(a.getId());
+		agentsRepository.delete(agent.getId());
 		assertNull(agentsRepository.findAgent(nombreUsuario, password, kind));
+	}
+	
+	@Test
+	public void testAñadirIncidencia() {
+		
 	}
 
 }
