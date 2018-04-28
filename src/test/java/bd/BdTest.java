@@ -107,14 +107,14 @@ public class BdTest {
 		
 		Agent agent = new Agent();
 		
-		agent.setUsername("pepe");
-		agent.setPassword("123");
+		agent.setUsername("javi");
+		agent.setPassword("125673");
 		agent.setKind("Entity");
 		agent.setKindCode(1L);
-		agent.setDni("12345678P");
-		agent.setNombre("Pelayo");
+		agent.setDni("1234w5678P");
+		agent.setNombre("Javi Lopez");
 		agent.setApellidos("García");
-		agent.setEmail("pelayo@uniovi.es");
+		agent.setEmail("javi@uniovi.es");
 		
 		agentsRepository.save(agent);
 		
