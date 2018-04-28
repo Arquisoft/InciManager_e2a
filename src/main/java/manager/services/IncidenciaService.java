@@ -68,9 +68,10 @@ public class IncidenciaService {
 		a.getIncidencias().add(inc);
 		agentsRepository.save(a);
 
-		Incidencia i = incidenciasRepository.findByDateAndAgent(date, a.getId());
+		//Incidencia i = incidenciasRepository.findByDateAndAgent(date, a.getId());
+		
 		//Enviamos por kafka
-		kafkaProducer.send("incidencias", i.toString());
+		kafkaProducer.send("incidencias", inc.toString());
 		
 		return inc;
 	}

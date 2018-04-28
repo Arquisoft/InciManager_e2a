@@ -47,10 +47,7 @@ public class BdTest {
 	CampoService campoService;
 	
 	@Autowired
-	AgentsRepository agentsRepository;
-	@Autowired
-	private EtiquetasRepository etiquetasRepository;
-	
+	AgentsRepository agentsRepository;	
 	
 
 	@Before
@@ -97,68 +94,68 @@ public class BdTest {
 		assertNull(agentsRepository.findAgent(nombreUsuario, password, kind));
 	}
 	
-//	@Test
-//	public void testAñadirIncidencia() {
-//		IncidenciaMin im = new IncidenciaMin();
-//		
-//		im.setNombre("Fuego en Calle Uría");
-//		im.setDescripcion("Incendiose la calle");
-//		im.setEtiqueta("Fuego, Agua");
-//		im.setCampo("Temperatura:45");
-//		im.setLatitud(23.362598);
-//		im.setLongitud(-32.23658);
-//		
-//		Agent agent = new Agent();
-//		
-//		agent.setUsername("pepe");
-//		agent.setPassword("123");
-//		agent.setKind("Entity");
-//		agent.setKindCode(1L);
-//		agent.setDni("12345678P");
-//		agent.setNombre("Pelayo");
-//		agent.setApellidos("García");
-//		agent.setEmail("pelayo@uniovi.es");
-//		
-//		agentsRepository.save(agent);
-//		
-//		incidenciaService.setAgent(agent);
-//		assertEquals(agent, incidenciaService.getAgent());
-//		
-//		Incidencia incidenciaEnviada = incidenciaService.addIncidencia(im);
-//		
-//		//Comprobamos que la incidencia fue añadida 
-//		assertNotNull(incidenciaService.getIncidencia(incidenciaEnviada.getId()));
-//		
-//		//Obtenemos las etiquetas que fueron añadidas 
-//		Set<Etiqueta> etiquetas = incidenciaService.cogerEtiquetas(im.getEtiqueta(), incidenciaEnviada);
-//		List<Etiqueta> lista = new ArrayList<Etiqueta>();
-//		lista.addAll(etiquetas);
-//		
-//		List<Etiqueta> lista2 = etiquetasService.obtenerEtiquetas(incidenciaEnviada.getId());
-//		assertNotNull(lista2);
-//		
-//		//Comprobamos que las listas de etiquetas tienen el mismo tamaño y mismas etiquetas.
-//		assertTrue(lista.size() == lista2.size());
-//		
-//		for(int i = 0; i<lista.size(); i++) {
-//			assertTrue(lista.get(i).getNombre().equals(lista2.get(i).getNombre()));
-//		}
-//		
-//		//Obtenemos los campos que fueron añadidos
-//		Set<Campo> campos = incidenciaService.cogerCampos(im.getCampo(), incidenciaEnviada);
-//		List<Campo>listaCampos = new ArrayList<Campo>();
-//		listaCampos.addAll(campos);
-//		
-//		List<Campo> listaCampos2 = campoService.obtenerCampos(incidenciaEnviada.getId());
-//		assertNotNull(listaCampos2);
-//		
-//		//Comprobamos que las listas de etiquetas tienen el mismo tamaño y mismas etiquetas.
-//		assertTrue(listaCampos.size() == listaCampos2.size());
-//				
-//		for(int i = 0; i<listaCampos.size(); i++) {
-//			assertTrue(listaCampos.get(i).getValor().equals(listaCampos2.get(i).getValor()));
-//		}
-//		
-//	}
+	@Test
+	public void testAñadirIncidencia() {
+		IncidenciaMin im = new IncidenciaMin();
+		
+		im.setNombre("Fuego en Calle Uría");
+		im.setDescripcion("Incendiose la calle");
+		im.setEtiqueta("Fuego, Agua");
+		im.setCampo("Temperatura:45");
+		im.setLatitud(23.362598);
+		im.setLongitud(-32.23658);
+		
+		Agent agent = new Agent();
+		
+		agent.setUsername("pepe");
+		agent.setPassword("123");
+		agent.setKind("Entity");
+		agent.setKindCode(1L);
+		agent.setDni("12345678P");
+		agent.setNombre("Pelayo");
+		agent.setApellidos("García");
+		agent.setEmail("pelayo@uniovi.es");
+		
+		agentsRepository.save(agent);
+		
+		incidenciaService.setAgent(agent);
+		assertEquals(agent, incidenciaService.getAgent());
+		
+		Incidencia incidenciaEnviada = incidenciaService.addIncidencia(im);
+		
+		//Comprobamos que la incidencia fue añadida 
+		assertNotNull(incidenciaService.getIncidencia(incidenciaEnviada.getId()));
+		
+		//Obtenemos las etiquetas que fueron añadidas 
+		Set<Etiqueta> etiquetas = incidenciaService.cogerEtiquetas(im.getEtiqueta(), incidenciaEnviada);
+		List<Etiqueta> lista = new ArrayList<Etiqueta>();
+		lista.addAll(etiquetas);
+		
+		List<Etiqueta> lista2 = etiquetasService.obtenerEtiquetas(incidenciaEnviada.getId());
+		assertNotNull(lista2);
+		
+		//Comprobamos que las listas de etiquetas tienen el mismo tamaño y mismas etiquetas.
+		assertTrue(lista.size() == lista2.size());
+		
+		for(int i = 0; i<lista.size(); i++) {
+			assertTrue(lista.get(i).getNombre().equals(lista2.get(i).getNombre()));
+		}
+		
+		//Obtenemos los campos que fueron añadidos
+		Set<Campo> campos = incidenciaService.cogerCampos(im.getCampo(), incidenciaEnviada);
+		List<Campo>listaCampos = new ArrayList<Campo>();
+		listaCampos.addAll(campos);
+		
+		List<Campo> listaCampos2 = campoService.obtenerCampos(incidenciaEnviada.getId());
+		assertNotNull(listaCampos2);
+		
+		//Comprobamos que las listas de etiquetas tienen el mismo tamaño y mismas etiquetas.
+		assertTrue(listaCampos.size() == listaCampos2.size());
+				
+		for(int i = 0; i<listaCampos.size(); i++) {
+			assertTrue(listaCampos.get(i).getValor().equals(listaCampos2.get(i).getValor()));
+		}
+		
+	}
 
 }
