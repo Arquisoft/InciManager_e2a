@@ -46,8 +46,8 @@ public class BdTest {
 	@Autowired
 	CampoService campoService;
 	
-	@Autowired
-	AgentsRepository agentsRepository;	
+	
+	
 	
 
 	@Before
@@ -88,10 +88,10 @@ public class BdTest {
 		agent.setEmail(email);
 		
 		agentService.addAgent(agent);
-		Agent a = agentsRepository.findAgent(nombreUsuario, password, kind);
+		Agent a = agentService.findAgent(nombreUsuario, password, kind);
 		assertNotNull(a);
-		agentsRepository.delete(agent.getId());
-		assertNull(agentsRepository.findAgent(nombreUsuario, password, kind));
+		agentService.elimnarAgent(agent.getId());
+		assertNull(agentService.findAgent(nombreUsuario, password, kind));
 	}
 	
 	@Test
@@ -111,12 +111,12 @@ public class BdTest {
 		agent.setPassword("125673");
 		agent.setKind("Entity");
 		agent.setKindCode(1L);
-		agent.setDni("1234w5678P");
+		agent.setDni("132lñpczsmngg8P");
 		agent.setNombre("Javi Lopez");
 		agent.setApellidos("García");
 		agent.setEmail("javi@uniovi.es");
 		
-		agentsRepository.save(agent);
+		agentService.addAgent(agent);
 		
 		incidenciaService.setAgent(agent);
 		assertEquals(agent, incidenciaService.getAgent());
@@ -155,6 +155,9 @@ public class BdTest {
 		for(int i = 0; i<listaCampos.size(); i++) {
 			assertTrue(listaCampos.get(i).getValor().equals(listaCampos2.get(i).getValor()));
 		}
+		
+		
+		agentService.elimnarAgent(agent.getId());
 		
 	}
 

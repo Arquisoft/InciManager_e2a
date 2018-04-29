@@ -45,6 +45,10 @@ public class IncidenciaService {
 
 	@Autowired
 	private KafkaProducer kafkaProducer;
+	
+	public void eliminarIncidencia(Long id) {
+		incidenciasRepository.delete(id);
+	}
 
 	@Transactional
 	public Incidencia addIncidencia(IncidenciaMin incidencia) {

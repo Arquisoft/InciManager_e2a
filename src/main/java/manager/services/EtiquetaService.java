@@ -17,5 +17,5 @@ public class EtiquetaService {
 	public List<Etiqueta> obtenerEtiquetas(Long id){
 		return etiquetasRepository.findByIncidencia(id);
 	}
-
+	
 }
