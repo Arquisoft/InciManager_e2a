@@ -62,21 +62,14 @@ public class IncidenciaService {
 		Set<Campo> campos = cogerCampos(incidencia.getCampo(), inc);
 		Location location = new Location(incidencia.getLatitud(), incidencia.getLongitud()).setIncidencia(inc);
 		inc.setNombre(incidencia.getNombre()).setDescripcion(incidencia.getDescripcion()).setLocalizacion(location)
-				.setEtiquetas(etiquetas).setCampos(campos).setAgent(a).setEstado(Status.ABIERTO).setFecha(date);
-
-		
+				.setEtiquetas(etiquetas).setCampos(campos).setAgent(a).setEstado(Status.ABIERTO).setFecha(date);	
 		incidenciasRepository.save(inc);
 		etiquetasRepository.save(etiquetas);
 		camposRepository.save(campos);
 		locationRepository.save(location);
 		a.getIncidencias().add(inc);
 		agentsRepository.save(a);
-
-		//Incidencia i = incidenciasRepository.findByDateAndAgent(date, a.getId());
-		
-		//Enviamos por kafka
 		kafkaProducer.send("incidencias", inc.toString());
-		
 		return inc;
 	}
 
