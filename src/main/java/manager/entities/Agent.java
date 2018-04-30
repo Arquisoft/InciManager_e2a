@@ -39,7 +39,7 @@ public class Agent {
 
 	private String email;
 
-	@OneToMany(fetch = FetchType.EAGER, mappedBy="agent")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "agent")
 	Set<Incidencia> incidencias = new HashSet<Incidencia>();
 
 	public Agent(String username, String password) {
@@ -68,6 +68,12 @@ public class Agent {
 		this.nombre = nombre;
 		this.apellidos = apellidos;
 		this.email = email;
+	}
+
+	public Agent(long id, String password, String kind, long kindCode, String dni, String nombre, String apellidos,
+			String email, String nombreUsuario) {
+		this(password, nombreUsuario, kind, kindCode, dni, nombre, apellidos, email);
+		this.id = id;
 	}
 
 	public String getUsername() {

@@ -11,11 +11,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.IntegrationTest;
-import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.EnableMBeanExport;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
@@ -26,8 +22,6 @@ import manager.entities.Campo;
 import manager.entities.Etiqueta;
 import manager.entities.Incidencia;
 import manager.entities.IncidenciaMin;
-import manager.repository.AgentsRepository;
-import manager.repository.EtiquetasRepository;
 import manager.services.AgentsService;
 import manager.services.CampoService;
 import manager.services.EtiquetaService;
@@ -61,7 +55,7 @@ public class BdTest {
 	}
 
 	@Test
-	public void testAñadirAgente() {
+	public void testAñadirAgente() throws Exception {
 		
 		Agent agent = new Agent();
 		

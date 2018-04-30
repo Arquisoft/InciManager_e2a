@@ -22,7 +22,7 @@ public class AgentController {
 
 	@RequestMapping(value = "/index", method = RequestMethod.POST)
 	public String showInfo(@RequestParam String login, @RequestParam String password,
-			@RequestParam String kind, Model model) {
+			@RequestParam String kind, Model model) throws Exception {
 		Agent a = agentsService.findAgent(login, password, kind);
 		incidenciaService.setAgent(a);
 		if (a != null)
