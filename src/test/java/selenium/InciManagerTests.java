@@ -37,9 +37,9 @@ public class InciManagerTests {
 	public void setUp() {
 		// Antes de cada prueba se navega al URL home de la aplicaciónn
 		driver = new HtmlUnitDriver();
-		URL = "http://localhost:8070";
+		URL = "http://localhost:8085";
 		driver.get(URL);
-		driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(4, TimeUnit.SECONDS);
 	}
 
 	// Después de cada prueba se borran las cookies del navegador
