@@ -26,7 +26,7 @@ public class AgentsService {
 	}
 
 	private Agent callAgent(String usuario, String password, String kind) throws Exception {
-		URL url = new URL("http://localhost:8070/info");
+		URL url = new URL("http://35.180.92.123:8070/info");
 
 		HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 		connection.setConnectTimeout(5000);// 5 secs

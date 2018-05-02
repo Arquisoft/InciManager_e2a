@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import org.junit.*;
+import org.junit.runner.RunWith;
 
 import selenium.pageobjects.PO_AddIncidencia;
 import selenium.pageobjects.PO_LoginView;
@@ -16,22 +17,24 @@ import selenium.util.SeleniumUtils;
 import org.junit.runners.MethodSorters;
 import org.openqa.selenium.*;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableMBeanExport;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.web.WebAppConfiguration;
 
-//Ordenamos las pruebas por el nombre del método
+import manager.InciManagerApplication;
+
+@RunWith(SpringJUnit4ClassRunner.class)
+@SpringBootTest(classes = InciManagerApplication.class, webEnvironment = WebEnvironment.DEFINED_PORT)
+//@WebAppConfiguration
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class InciManagerTests {
 
 	private static WebDriver driver;
 	static String URL;
 	private static StringBuffer verificationErrors = new StringBuffer();
-
-	// public static WebDriver getDriver(String PathFirefox) {
-	// System.setProperty("webdriver.firefox.bin", PathFirefox);
-	// WebDriver driver = new FirefoxDriver();
-	// return driver;
-	// }
 
 	@Before
 	public void setUp() {
@@ -45,7 +48,6 @@ public class InciManagerTests {
 	// Después de cada prueba se borran las cookies del navegador
 	@After
 	public void tearDown() {
-		// driver.quit();
 		driver.manage().deleteAllCookies();
 		driver.get(URL + "/logout");
 	}
@@ -53,24 +55,17 @@ public class InciManagerTests {
 	@AfterClass
 	static public void end() {
 		driver.quit();
-		// String verificationErrorString = verificationErrors.toString();
-
 	}
 
 	@Test
 	public void test1IntentoDeRellenarFormularioSinIniciarSesion() {
 		driver.get(URL + "/formSendIncidence");
-		// Comprobamos que nos vamos a la pantalla de login
-		// PO_View.checkElement(driver, "text", "Sistema de participacion ciudadana");
-
 		try {
 			PO_View.checkElement(driver, "text", "Sistema de participacion ciudadana");
 		} catch (Error e) {
 			verificationErrors.append(e.toString());
 		}
 
-		// SeleniumUtils.EsperaCargaPagina(driver, "text", "Sistema de participacion
-		// ciudadana", PO_View.getTimeout());
 	}
 
 	@Test
@@ -85,18 +80,18 @@ public class InciManagerTests {
 
 	}
 
-	@Test
-	public void test3InicioSesionInvalido() {
-		try {
-			// Rellenamos el formulario
-			PO_LoginView.fillForm(driver, "juanin", "135675476723", "Person");
-			// Comprobamos que nos vamos a la pantalla de error
-			PO_View.checkElement(driver, "text", "Ha ocurrido un error");
-		} catch (Error e) {
-			verificationErrors.append(e.toString());
-		}
-
-	}
+//	@Test
+//	public void test3InicioSesionInvalido() {
+//		try {
+//			// Rellenamos el formulario
+//			PO_LoginView.fillForm(driver, "juanin", "135675476723", "Person");
+//			// Comprobamos que nos vamos a la pantalla de error
+//			PO_View.checkElement(driver, "text", "Ha ocurrido un error");
+//		} catch (Error e) {
+//			verificationErrors.append(e.toString());
+//		}
+//
+//	}
 
 	@Test
 	public void test4InicioSesionValido() {
