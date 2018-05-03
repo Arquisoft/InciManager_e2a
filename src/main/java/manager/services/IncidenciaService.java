@@ -58,7 +58,7 @@ public class IncidenciaService {
 		
 		Set<Etiqueta> etiquetas = cogerEtiquetas(incidencia.getEtiqueta(), inc);
 		
-		Agent a = agentsRepository.findAgent(agent.getUsername(), agent.getPassword(), agent.getKind());
+		Agent a = agentsRepository.findAgentByUsername(agent.getUsername());
 		Set<Campo> campos = cogerCampos(incidencia.getCampo(), inc);
 		Location location = new Location(incidencia.getLatitud(), incidencia.getLongitud()).setIncidencia(inc);
 		inc.setNombre(incidencia.getNombre()).setDescripcion(incidencia.getDescripcion()).setLocalizacion(location)
