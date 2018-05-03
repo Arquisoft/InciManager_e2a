@@ -1,6 +1,7 @@
 package manager.kafka;
 
 import org.apache.kafka.clients.producer.ProducerConfig;
+import org.apache.kafka.common.serialization.StringDeserializer;
 import org.apache.kafka.common.serialization.StringSerializer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -26,10 +27,10 @@ public class KafkaProducerFactory {
     	String usuario = "lll0s2u5";
     	String password = "tur_ztPxqG783K3w9LcxoL2ZdqZSr1u_";
     	String jaasTemplate = "org.apache.kafka.common.security.scram.ScramLoginModule required username=\"%s\" password=\"%s\";";
-    	String jaasCfg = String.format(jaasTemplate, usuario, password);    
+    	String jaasCfg = String.format(jaasTemplate, usuario, password);   
     	
         Map<String, Object> props = new HashMap<>();
-        props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
+		props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "http://ark-01.srvs.cloudkafka.com:9094");
         props.put(ProducerConfig.RETRIES_CONFIG, 0);
         props.put(ProducerConfig.BATCH_SIZE_CONFIG, 16384);
         props.put(ProducerConfig.LINGER_MS_CONFIG, 1);
@@ -41,6 +42,8 @@ public class KafkaProducerFactory {
         props.put("auto.commit.interval.ms", "1000");
         props.put("auto.offset.reset", "earliest");
         props.put("session.timeout.ms", "30000");
+        props.put("key.deserializer", StringDeserializer.class);
+        props.put("value.deserializer", StringDeserializer.class);
         props.put("key.serializer", StringSerializer.class);
         props.put("value.serializer", StringSerializer.class);
         props.put("security.protocol", "SASL_SSL");
