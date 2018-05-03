@@ -18,11 +18,7 @@ import manager.entities.Location;
 import manager.entities.Status;
 import manager.kafka.KafkaProducer;
 import manager.repository.AgentsRepository;
-import manager.repository.CamposRepository;
-import manager.repository.EtiquetasRepository;
 import manager.repository.IncidenciasRepository;
-import manager.repository.LocationRepository;
-
 @Service
 public class IncidenciaService {
 
@@ -34,14 +30,14 @@ public class IncidenciaService {
 	@Autowired
 	private AgentsRepository agentsRepository;
 
-	@Autowired
-	private EtiquetasRepository etiquetasRepository;
-
-	@Autowired
-	private CamposRepository camposRepository;
-
-	@Autowired
-	private LocationRepository locationRepository;
+//	@Autowired
+//	private EtiquetasRepository etiquetasRepository;
+//
+//	@Autowired
+//	private CamposRepository camposRepository;
+//
+//	@Autowired
+//	private LocationRepository locationRepository;
 
 	@Autowired
 	private KafkaProducer kafkaProducer;
@@ -69,7 +65,7 @@ public class IncidenciaService {
 		//locationRepository.save(location);
 		//a.getIncidencias().add(inc);
 		//agentsRepository.save(a);
-		kafkaProducer.send("incidencias", inc.toString());
+		kafkaProducer.send("lll0s2u5-incidencias", inc.toString());
 		return inc;
 	}
 

@@ -23,6 +23,11 @@ public class KafkaProducerFactory {
 
     @Bean
     public Map<String, Object> producerConfigs() {
+    	String usuario = "lll0s2u5";
+    	String password = "tur_ztPxqG783K3w9LcxoL2ZdqZSr1u_";
+    	String jaasTemplate = "org.apache.kafka.common.security.scram.ScramLoginModule required username=\"%s\" password=\"%s\";";
+    	String jaasCfg = String.format(jaasTemplate, usuario, password);    
+    	
         Map<String, Object> props = new HashMap<>();
         props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
         props.put(ProducerConfig.RETRIES_CONFIG, 0);
@@ -31,6 +36,16 @@ public class KafkaProducerFactory {
         props.put(ProducerConfig.BUFFER_MEMORY_CONFIG, 33554432);
         props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
         props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
+        
+        props.put("enable.auto.commit", "true");
+        props.put("auto.commit.interval.ms", "1000");
+        props.put("auto.offset.reset", "earliest");
+        props.put("session.timeout.ms", "30000");
+        props.put("key.serializer", StringSerializer.class);
+        props.put("value.serializer", StringSerializer.class);
+        props.put("security.protocol", "SASL_SSL");
+        props.put("sasl.mechanism", "SCRAM-SHA-256");
+        props.put("sasl.jaas.config", jaasCfg);      
         return props;
     }
 
