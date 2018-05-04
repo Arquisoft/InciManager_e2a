@@ -10,6 +10,6 @@ import manager.entities.Etiqueta;
 public interface EtiquetasRepository extends CrudRepository <Etiqueta, Long> {
 	
 	@Query("SELECT e FROM Etiqueta e WHERE e.incidencia.id = ?1")
-	List<Etiqueta> findByIncidencia(Long id);
+	List<Etiqueta> findByIncidenciaId(Long id);
 	
 }

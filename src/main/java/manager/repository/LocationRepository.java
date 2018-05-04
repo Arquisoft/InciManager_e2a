@@ -1,6 +1,5 @@
 package manager.repository;
 
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
 import manager.entities.Location;

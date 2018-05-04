@@ -84,16 +84,16 @@ public class InciManagerTests {
 		// Rellenamos el formulario
 		PO_LoginView.fillForm(driver, "juan", "123456", "Entity");
 		// Comprobamos que entramos en sesión
-		SeleniumUtils.EsperaCargaPagina(driver, "text", "Bienvenidos al sistema de incidencias", PO_View.getTimeout());
+		SeleniumUtils.esperaCargaPagina(driver, "text", "Bienvenidos al sistema de incidencias", PO_View.getTimeout());
 
-		List<WebElement> elementos = SeleniumUtils.EsperaCargaPagina(driver, "free",
+		List<WebElement> elementos = SeleniumUtils.esperaCargaPagina(driver, "free",
 				"//li[contains(@id,'formSendIncidence')]/a", PO_View.getTimeout());
 		elementos.get(0).click();
 
 		PO_AddIncidencia.fillForm(driver, "", "", "", "", "", "");
 		// Al dejar campos vacíos seguimos en el envío de la incidencia mirando como
 		// aparecen los inputs
-		SeleniumUtils.EsperaCargaPagina(driver, "class", "col-sm-10", PO_View.getTimeout());
+		SeleniumUtils.esperaCargaPagina(driver, "class", "col-sm-10", PO_View.getTimeout());
 
 	}
 
@@ -103,16 +103,16 @@ public class InciManagerTests {
 		// Rellenamos el formulario
 		PO_LoginView.fillForm(driver, "juan", "123456", "Entity");
 		// Comprobamos que entramos en sesión
-		SeleniumUtils.EsperaCargaPagina(driver, "text", "Bienvenidos al sistema de incidencias", PO_View.getTimeout());
+		SeleniumUtils.esperaCargaPagina(driver, "text", "Bienvenidos al sistema de incidencias", PO_View.getTimeout());
 
-		List<WebElement> elementos = SeleniumUtils.EsperaCargaPagina(driver, "free",
+		List<WebElement> elementos = SeleniumUtils.esperaCargaPagina(driver, "free",
 				"//li[contains(@id,'formSendIncidence')]/a", PO_View.getTimeout());
 		elementos.get(0).click();
 
 		PO_AddIncidencia.fillForm(driver, "hola", "hola", "fuego,incendio", "fuego:extremo", "45.356", "-32.145");
 		// Al dejar campos vacíos seguimos en el envío de la incidencia mirando como
 		// aparecen los inputs
-		SeleniumUtils.EsperaCargaPagina(driver, "class", "text-danger", PO_View.getTimeout());
+		SeleniumUtils.esperaCargaPagina(driver, "class", "text-danger", PO_View.getTimeout());
 
 	}
 
@@ -122,16 +122,16 @@ public class InciManagerTests {
 		// Rellenamos el formulario
 		PO_LoginView.fillForm(driver, "juan", "123456", "Entity");
 		// Comprobamos que entramos en sesión
-		SeleniumUtils.EsperaCargaPagina(driver, "text", "Bienvenidos al sistema de incidencias", PO_View.getTimeout());
+		SeleniumUtils.esperaCargaPagina(driver, "text", "Bienvenidos al sistema de incidencias", PO_View.getTimeout());
 
-		List<WebElement> elementos = SeleniumUtils.EsperaCargaPagina(driver, "free",
+		List<WebElement> elementos = SeleniumUtils.esperaCargaPagina(driver, "free",
 				"//li[contains(@id,'formSendIncidence')]/a", PO_View.getTimeout());
 		elementos.get(0).click();
 
 		PO_AddIncidencia.fillForm(driver, "@@@@@", "@@@@@", "@@@@@", "@@@@@:$$$$$", "45.356", "-32.145");
 		// Al dejar campos vacíos seguimos en el envío de la incidencia mirando como
 		// aparecen los inputs
-		SeleniumUtils.EsperaCargaPagina(driver, "class", "text-danger", PO_View.getTimeout());
+		SeleniumUtils.esperaCargaPagina(driver, "class", "text-danger", PO_View.getTimeout());
 
 	}
 
@@ -141,9 +141,9 @@ public class InciManagerTests {
 		// Rellenamos el formulario
 		PO_LoginView.fillForm(driver, "juan", "123456", "Entity");
 		// Comprobamos que entramos en sesión
-		SeleniumUtils.EsperaCargaPagina(driver, "text", "Bienvenidos al sistema de incidencias", PO_View.getTimeout());
+		SeleniumUtils.esperaCargaPagina(driver, "text", "Bienvenidos al sistema de incidencias", PO_View.getTimeout());
 
-		List<WebElement> elementos = SeleniumUtils.EsperaCargaPagina(driver, "free",
+		List<WebElement> elementos = SeleniumUtils.esperaCargaPagina(driver, "free",
 				"//li[contains(@id,'formSendIncidence')]/a", PO_View.getTimeout());
 		elementos.get(0).click();
 
@@ -151,7 +151,7 @@ public class InciManagerTests {
 				"45.356", "-32.145");
 		// Al dejar campos vacíos seguimos en el envío de la incidencia mirando como
 		// aparecen los inputs
-		SeleniumUtils.EsperaCargaPagina(driver, "class", "text-danger", PO_View.getTimeout());
+		SeleniumUtils.esperaCargaPagina(driver, "class", "text-danger", PO_View.getTimeout());
 
 	}
 
@@ -161,9 +161,9 @@ public class InciManagerTests {
 		// Rellenamos el formulario
 		PO_LoginView.fillForm(driver, "juan", "123456", "Entity");
 		// Comprobamos que entramos en sesión
-		SeleniumUtils.EsperaCargaPagina(driver, "text", "Bienvenidos al sistema de incidencias", PO_View.getTimeout());
+		SeleniumUtils.esperaCargaPagina(driver, "text", "Bienvenidos al sistema de incidencias", PO_View.getTimeout());
 
-		List<WebElement> elementos = SeleniumUtils.EsperaCargaPagina(driver, "free",
+		List<WebElement> elementos = SeleniumUtils.esperaCargaPagina(driver, "free",
 				"//li[contains(@id,'formSendIncidence')]/a", PO_View.getTimeout());
 		elementos.get(0).click();
 
@@ -171,7 +171,7 @@ public class InciManagerTests {
 				"45.356", "-32.145");
 		// Al dejar campos vacíos seguimos en el envío de la incidencia mirando como
 		// aparecen los inputs
-		SeleniumUtils.EsperaCargaPagina(driver, "text", "La Incidencia ha sido enviada correctamente",
+		SeleniumUtils.esperaCargaPagina(driver, "text", "La Incidencia ha sido enviada correctamente",
 				PO_View.getTimeout());
 
 	}
@@ -182,9 +182,9 @@ public class InciManagerTests {
 		// Rellenamos el formulario
 		PO_LoginView.fillForm(driver, "juan", "123456", "Entity");
 		// Comprobamos que entramos en sesión
-		SeleniumUtils.EsperaCargaPagina(driver, "text", "Bienvenidos al sistema de incidencias", PO_View.getTimeout());
+		SeleniumUtils.esperaCargaPagina(driver, "text", "Bienvenidos al sistema de incidencias", PO_View.getTimeout());
 
-		List<WebElement> elementos = SeleniumUtils.EsperaCargaPagina(driver, "free",
+		List<WebElement> elementos = SeleniumUtils.esperaCargaPagina(driver, "free",
 				"//li[contains(@id,'formSendIncidence')]/a", PO_View.getTimeout());
 		elementos.get(0).click();
 
@@ -192,10 +192,10 @@ public class InciManagerTests {
 				"45.356", "-32.145");
 		// Al dejar campos vacíos seguimos en el envío de la incidencia mirando como
 		// aparecen los inputs
-		SeleniumUtils.EsperaCargaPagina(driver, "text", "La Incidencia ha sido enviada correctamente",
+		SeleniumUtils.esperaCargaPagina(driver, "text", "La Incidencia ha sido enviada correctamente",
 				PO_View.getTimeout());
 
-		elementos = SeleniumUtils.EsperaCargaPagina(driver, "free", "//li[contains(@id,'list')]/a",
+		elementos = SeleniumUtils.esperaCargaPagina(driver, "free", "//li[contains(@id,'list')]/a",
 				PO_View.getTimeout());
 		elementos.get(0).click();
 

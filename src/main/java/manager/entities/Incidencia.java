@@ -70,14 +70,13 @@ public class Incidencia {
 	}
 	
 	public Incidencia(String nombre, String descripcion, Location localizacion, Set<Etiqueta> etiquetas,
-			Set<Campo> campos, Date fecha, String estado) {
+			Set<Campo> campos, Date fecha) {
 		super();
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 		this.location = localizacion;
 		this.etiquetas = etiquetas;
 		this.campos = campos;
-		// this.estado = EstadoIncidencia.ABIERTA;
 		this.estado = Status.ABIERTO;
 		this.fecha = fecha;
 	}

@@ -15,7 +15,7 @@ public class CampoService {
 	private CamposRepository campoRepository;
 	
 	public List<Campo> obtenerCampos(Long id){
-		return campoRepository.findByIncidencia(id);
+		return campoRepository.findByIncidenciaId(id);
 	}
 	
 }

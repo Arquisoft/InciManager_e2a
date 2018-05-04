@@ -17,13 +17,20 @@ public class IncidenciaValidator implements Validator {
 	@Override
 	public void validate(Object target, Errors errors) {
 		IncidenciaMin incidencia = (IncidenciaMin) target;
+		validateUtils(errors);
+		validateIf(errors, incidencia);
+	}
+
+	private void validateUtils(Errors errors) {
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "nombre", "Error.empty");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "descripcion", "Error.empty");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "etiqueta", "Error.empty");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "campo", "Error.empty");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "latitud", "Error.empty");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "longitud", "Error.empty");
+	}
 
+	private void validateIf(Errors errors, IncidenciaMin incidencia) {
 		if (incidencia.getNombre().length() < 5 || incidencia.getNombre().length() > 24) {
 			errors.rejectValue("nombre", "Error.sendIncidence.nombre.length");
 		}

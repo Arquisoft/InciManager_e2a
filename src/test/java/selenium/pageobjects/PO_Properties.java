@@ -5,7 +5,7 @@ import java.util.ResourceBundle;
 
 public class PO_Properties {
 	
-	private static String Path;
+	private String Path;
 	private static int SPANISH = 0;
 	private static int ENGLISH = 1;
 	private static Locale[] idioms = new Locale[] { new Locale("ES"), new Locale("EN") };
@@ -20,7 +20,7 @@ public class PO_Properties {
 
 	public PO_Properties(String Path)
 	{
-		PO_Properties.Path = Path;
+		this.Path = Path;
 	}
 
 	//

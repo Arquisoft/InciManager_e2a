@@ -78,7 +78,7 @@ public class SeleniumUtils {
 	 * @param timeout: el tiempo máximo que se esperará por la apareción del elemento a buscar con criterio/text.
 	 * @return Se retornará la lista de elementos resultantes de la búsqueda.
 	 */
-	static public List<WebElement> EsperaCargaPagina(WebDriver driver, String criterio, String text, int timeout)
+	static public List<WebElement> esperaCargaPagina(WebDriver driver, String criterio, String text, int timeout)
 	{
 		String busqueda;
 		if ("id".equals(criterio)) busqueda = "//*[contains(@id,'" + text + "')]";
