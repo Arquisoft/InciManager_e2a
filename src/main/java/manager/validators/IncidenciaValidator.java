@@ -31,22 +31,39 @@ public class IncidenciaValidator implements Validator {
 	}
 
 	private void validateIf(Errors errors, IncidenciaMin incidencia) {
+		nombreIf(errors, incidencia);
+		descripcionIf(errors, incidencia);
+		etiquetaIf(errors, incidencia);
+		campoIf(errors, incidencia);
+	}
+
+	private void descripcionIf(Errors errors, IncidenciaMin incidencia) {
+		if (incidencia.getDescripcion().length() < 5 || incidencia.getDescripcion().length() > 200) {
+			errors.rejectValue("descripcion", "Error.sendIncidence.descripcion.length");
+		}
+
+		if (valorProhibido(incidencia.getDescripcion())) {
+			errors.rejectValue("descripcion", "Error.prohibido");
+		}
+	}
+
+	private void nombreIf(Errors errors, IncidenciaMin incidencia) {
 		if (incidencia.getNombre().length() < 5 || incidencia.getNombre().length() > 24) {
 			errors.rejectValue("nombre", "Error.sendIncidence.nombre.length");
 		}
 
-		if (incidencia.getDescripcion().length() < 5 || incidencia.getDescripcion().length() > 200) {
-			errors.rejectValue("descripcion", "Error.sendIncidence.descripcion.length");
-		}
 		if (valorProhibido(incidencia.getNombre())) {
 			errors.rejectValue("nombre", "Error.prohibido");
 		}
-		if (valorProhibido(incidencia.getDescripcion())) {
-			errors.rejectValue("descripcion", "Error.prohibido");
-		}
+	}
+
+	private void etiquetaIf(Errors errors, IncidenciaMin incidencia) {
 		if (valorProhibido(incidencia.getEtiqueta())) {
 			errors.rejectValue("etiqueta", "Error.prohibido");
 		}
+	}
+
+	private void campoIf(Errors errors, IncidenciaMin incidencia) {
 		if (valorProhibido(incidencia.getCampo())) {
 			errors.rejectValue("campo", "Error.prohibido");
 		}
