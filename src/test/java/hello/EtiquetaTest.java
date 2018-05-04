@@ -11,14 +11,6 @@ import manager.entities.Incidencia;
 
 public class EtiquetaTest {
 
-	@Before
-	public void setUp() throws Exception {
-	}
-
-	@After
-	public void tearDown() throws Exception {
-	}
-
 	@Test
 	public void test() {
 

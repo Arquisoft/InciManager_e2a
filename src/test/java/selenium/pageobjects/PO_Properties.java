@@ -4,6 +4,12 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class PO_Properties {
+	
+	private static String Path;
+	private static int SPANISH = 0;
+	private static int ENGLISH = 1;
+	private static Locale[] idioms = new Locale[] { new Locale("ES"), new Locale("EN") };
+	
 	public static int getSPANISH() {
 		return SPANISH;
 	}
@@ -12,13 +18,7 @@ public class PO_Properties {
 		return ENGLISH;
 	}
 
-	static private String Path;
-	static int SPANISH = 0;
-	static int ENGLISH = 1;
-	static Locale[] idioms = new Locale[] { new Locale("ES"), new Locale("EN") };
-
-	// static Properties p = new Properties();
-	public PO_Properties(String Path) // throws FileNotFoundException, IOException
+	public PO_Properties(String Path)
 	{
 		PO_Properties.Path = Path;
 	}

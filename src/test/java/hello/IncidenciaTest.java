@@ -16,7 +16,7 @@ import manager.entities.Status;
 public class IncidenciaTest {
 
 	@Test
-	public void ToStringKafkatest() {
+	public void toStringKafkatest() {
 		Date fecha = new Date();
 		Incidencia inc = new Incidencia();
 		Set<Etiqueta> etiquetas = new HashSet<Etiqueta>();

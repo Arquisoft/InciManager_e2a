@@ -22,7 +22,7 @@ public class Incidencia {
 
 	@Id
 	@GeneratedValue
-	Long id;
+	private Long id;
 
 	@ManyToOne(cascade = { CascadeType.ALL })
 	private Agent agent;

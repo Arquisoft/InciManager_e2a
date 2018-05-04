@@ -56,7 +56,4 @@ public class KafkaProducerFactory {
     public KafkaTemplate<String, String> kafkaTemplate() {
         return new KafkaTemplate<String, String>(producerFactory());
     }
-
-
-
 }

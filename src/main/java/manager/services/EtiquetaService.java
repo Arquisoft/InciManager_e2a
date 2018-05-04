@@ -12,7 +12,7 @@ import manager.repository.EtiquetasRepository;
 public class EtiquetaService {
 	
 	@Autowired 
-	EtiquetasRepository etiquetasRepository;
+	private EtiquetasRepository etiquetasRepository;
 	
 	public List<Etiqueta> obtenerEtiquetas(Long id){
 		return etiquetasRepository.findByIncidencia(id);

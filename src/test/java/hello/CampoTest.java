@@ -2,8 +2,6 @@ package hello;
 
 import static org.junit.Assert.*;
 
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 
 import manager.entities.Campo;
@@ -11,14 +9,6 @@ import manager.entities.Incidencia;
 import manager.entities.TipoCampos;
 
 public class CampoTest {
-
-	@Before
-	public void setUp() throws Exception {
-	}
-
-	@After
-	public void tearDown() throws Exception {
-	}
 
 	@Test
 	public void test() {

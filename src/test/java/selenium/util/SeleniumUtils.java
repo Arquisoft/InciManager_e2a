@@ -42,7 +42,7 @@ public class SeleniumUtils {
 	 * @param texto: texto a buscar
 	 * @param timeout: el tiempo máximo que se esperará por la aparición del texto a buscar
 	 */
-	static public void EsperaCargaPaginaNoTexto(WebDriver driver, String texto, int timeout)
+	static public void esperaCargaPaginaNoTexto(WebDriver driver, String texto, int timeout)
 	{
 		Boolean resultado = 
 				(new WebDriverWait(driver, timeout)).until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[contains(text(),'" + texto + "')]")));
@@ -58,7 +58,7 @@ public class SeleniumUtils {
 	 * @param timeout: el tiempo máximo que se esperará por la aparición del elemento a buscar con xpath
 	 * @return  Se retornará la lista de elementos resultantes de la búsqueda con xpath.
 	 */
-	static public List<WebElement> EsperaCargaPaginaxpath(WebDriver driver, String xpath, int timeout)
+	static public List<WebElement> esperaCargaPaginaxpath(WebDriver driver, String xpath, int timeout)
 	{
 		WebElement resultado = 
 				(new WebDriverWait(driver, timeout)).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
@@ -81,13 +81,13 @@ public class SeleniumUtils {
 	static public List<WebElement> EsperaCargaPagina(WebDriver driver, String criterio, String text, int timeout)
 	{
 		String busqueda;
-		if (criterio.equals("id")) busqueda = "//*[contains(@id,'" + text + "')]";
-		else if (criterio.equals("class")) busqueda = "//*[contains(@class,'" + text + "')]";
-		else if (criterio.equals("text")) busqueda = "//*[contains(text(),'" + text + "')]";
-		else if (criterio.equals("free")) busqueda = text;
+		if ("id".equals(criterio)) busqueda = "//*[contains(@id,'" + text + "')]";
+		else if ("class".equals(criterio)) busqueda = "//*[contains(@class,'" + text + "')]";
+		else if ("text".equals(criterio)) busqueda = "//*[contains(text(),'" + text + "')]";
+		else if ("free".equals(criterio)) busqueda = text;
 		else busqueda = "//*[contains("+criterio+",'" + text + "')]";
 
-		return EsperaCargaPaginaxpath(driver, busqueda, timeout);
+		return esperaCargaPaginaxpath(driver, busqueda, timeout);
 	}
 
 
@@ -103,7 +103,6 @@ public class SeleniumUtils {
 			try {
 				driver.wait(segundos * 1000);
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}

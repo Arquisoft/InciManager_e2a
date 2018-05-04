@@ -12,7 +12,7 @@ import manager.repository.CamposRepository;
 public class CampoService {
 
 	@Autowired
-	CamposRepository campoRepository;
+	private CamposRepository campoRepository;
 	
 	public List<Campo> obtenerCampos(Long id){
 		return campoRepository.findByIncidencia(id);

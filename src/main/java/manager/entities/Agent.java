@@ -16,7 +16,7 @@ public class Agent {
 
 	@Id
 	@GeneratedValue
-	Long id;
+	private Long id;
 
 	@Column(unique = true)
 	@NotNull
@@ -40,7 +40,7 @@ public class Agent {
 	private String email;
 
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "agent")
-	Set<Incidencia> incidencias = new HashSet<Incidencia>();
+	private Set<Incidencia> incidencias = new HashSet<Incidencia>();
 
 	public Agent(String username, String password) {
 		this(username);

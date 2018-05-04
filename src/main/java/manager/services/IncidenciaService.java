@@ -71,7 +71,7 @@ public class IncidenciaService {
 
 	public Set<Campo> cogerCampos(String campo, Incidencia incidencia) {
 		Set<Campo> c = new HashSet<Campo>();
-		if (campo.equals(""))
+		if ("".equals(campo))
 			return c;
 		String[] campos = campo.split(",");
 		for (String s : campos)
@@ -81,7 +81,7 @@ public class IncidenciaService {
 
 	public Set<Etiqueta> cogerEtiquetas(String etiqueta, Incidencia incidencia) {
 		Set<Etiqueta> e = new HashSet<Etiqueta>();
-		if (etiqueta.equals("")) {
+		if ("".equals(etiqueta)) {
 			return e;
 		}
 		String[] etiquetas = etiqueta.split(",");
@@ -106,5 +106,4 @@ public class IncidenciaService {
 	public void setAgent(Agent agent) {
 		this.agent = agent;
 	}
-	
 }

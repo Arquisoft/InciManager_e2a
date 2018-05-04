@@ -10,14 +10,15 @@ public class Etiqueta {
 
 	@Id
 	@GeneratedValue
-	Long id;
+	private Long id;
 
 	@ManyToOne //(cascade = {CascadeType.ALL})
 	private Incidencia incidencia;
 
 	private String valor;
-
-	public Etiqueta() {
+	
+	public Etiqueta () {
+		this.valor = "";
 	}
 
 	public Incidencia getIncidencia() {

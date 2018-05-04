@@ -26,56 +26,56 @@ public class MinToIncidenceTest {
 	private IncidenciaService incidenciaService;
 
 	@Test
-	public void CogerEtiquetas1test() {
+	public void cogerEtiquetas1test() {
 		String cad = "luz,fuego,destrucción";
 		Set<Etiqueta> etiquetas = incidenciaService.cogerEtiquetas(cad, null);
 		assertEquals(3, etiquetas.size());
 	}
 
 	@Test
-	public void CogerEtiquetas2test() {
+	public void cogerEtiquetas2test() {
 		String cad = "luz,luz,destrucción"; // Repetimos 2 etiquetas para comprobar que no se guarda una de ellas
 		Set<Etiqueta> etiquetas = incidenciaService.cogerEtiquetas(cad, null);
 		assertEquals(2, etiquetas.size());
 	}
 
 	@Test
-	public void CogerEtiquetas3test() {
+	public void cogerEtiquetas3test() {
 		String cad = "fuego";
 		Set<Etiqueta> etiquetas = incidenciaService.cogerEtiquetas(cad, null);
 		assertEquals(1, etiquetas.size());
 	}
 
 	@Test
-	public void CogerEtiquetas4test() {
+	public void cogerEtiquetas4test() {
 		String cad = "";
 		Set<Etiqueta> etiquetas = incidenciaService.cogerEtiquetas(cad, null);
 		assertTrue(etiquetas.isEmpty());
 	}
 
 	@Test
-	public void CogerCampos1test() {
+	public void cogerCampos1test() {
 		String cam = "Mundo:Ruina,Temperatura:9000";
 		Set<Campo> campos = incidenciaService.cogerCampos(cam, null);
 		assertEquals(2, campos.size());
 	}
 
 	@Test
-	public void CogerCampos2test() {
+	public void cogerCampos2test() {
 		String cam = "Mundo:Ruina,Mundo:Feliz"; // La clave se repite por lo que solo habrá un campo
 		Set<Campo> campos = incidenciaService.cogerCampos(cam, null);
 		assertEquals(1, campos.size());
 	}
 
 	@Test
-	public void CogerCampos3test() {
+	public void cogerCampos3test() {
 		String cam = "Mundo:Ruina,Temperatura:Ruina"; // El valor si puede coincidir
 		Set<Campo> campos = incidenciaService.cogerCampos(cam, null);
 		assertEquals(2, campos.size());
 	}
 
 	@Test
-	public void CogerCampos4test() {
+	public void cogerCampos4test() {
 		String cam = "";
 		Set<Campo> campos = incidenciaService.cogerCampos(cam, null);
 		assertTrue(campos.isEmpty());
