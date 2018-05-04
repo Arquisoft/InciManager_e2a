@@ -30,15 +30,6 @@ public class IncidenciaService {
 	@Autowired
 	private AgentsRepository agentsRepository;
 
-//	@Autowired
-//	private EtiquetasRepository etiquetasRepository;
-//
-//	@Autowired
-//	private CamposRepository camposRepository;
-//
-//	@Autowired
-//	private LocationRepository locationRepository;
-
 	@Autowired
 	private KafkaProducer kafkaProducer;
 	
@@ -97,6 +88,11 @@ public class IncidenciaService {
 
 	public Incidencia getIncidencia(Long id) {
 		return incidenciasRepository.findOne(id);
+	}
+	
+	public Incidencia nuevaIncidencia(Incidencia i) {
+		incidenciasRepository.save(i);
+		return i;
 	}
 
 	public Agent getAgent() {

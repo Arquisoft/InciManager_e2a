@@ -72,7 +72,7 @@ public class InciManagerTests {
 	public void test3InicioSesionValido() {
 
 		// Rellenamos el formulario
-		PO_LoginView.fillForm(driver, "juan", "123456", "Entity");
+		PO_LoginView.fillForm(driver, "Juan", "123456", "Entity");
 		// Comprobamos que entramos en sesión
 		PO_View.checkElement(driver, "text", "Bienvenidos al sistema de incidencias");
 
@@ -82,7 +82,7 @@ public class InciManagerTests {
 	public void test4FormularioIncorrectoCamposVacios() {
 
 		// Rellenamos el formulario
-		PO_LoginView.fillForm(driver, "juan", "123456", "Entity");
+		PO_LoginView.fillForm(driver, "Juan", "123456", "Entity");
 		// Comprobamos que entramos en sesión
 		SeleniumUtils.esperaCargaPagina(driver, "text", "Bienvenidos al sistema de incidencias", PO_View.getTimeout());
 
@@ -101,7 +101,7 @@ public class InciManagerTests {
 	public void test5TituloYDescripcionPequeña() {
 
 		// Rellenamos el formulario
-		PO_LoginView.fillForm(driver, "juan", "123456", "Entity");
+		PO_LoginView.fillForm(driver, "Juan", "123456", "Entity");
 		// Comprobamos que entramos en sesión
 		SeleniumUtils.esperaCargaPagina(driver, "text", "Bienvenidos al sistema de incidencias", PO_View.getTimeout());
 
@@ -120,7 +120,7 @@ public class InciManagerTests {
 	public void test6ValorProhibido() {
 
 		// Rellenamos el formulario
-		PO_LoginView.fillForm(driver, "juan", "123456", "Entity");
+		PO_LoginView.fillForm(driver, "Juan", "123456", "Entity");
 		// Comprobamos que entramos en sesión
 		SeleniumUtils.esperaCargaPagina(driver, "text", "Bienvenidos al sistema de incidencias", PO_View.getTimeout());
 
@@ -139,7 +139,7 @@ public class InciManagerTests {
 	public void test7CampoIncorrecto() {
 
 		// Rellenamos el formulario
-		PO_LoginView.fillForm(driver, "juan", "123456", "Entity");
+		PO_LoginView.fillForm(driver, "Juan", "123456", "Entity");
 		// Comprobamos que entramos en sesión
 		SeleniumUtils.esperaCargaPagina(driver, "text", "Bienvenidos al sistema de incidencias", PO_View.getTimeout());
 
@@ -159,7 +159,7 @@ public class InciManagerTests {
 	public void test8IncidenciaCorrecta() {
 
 		// Rellenamos el formulario
-		PO_LoginView.fillForm(driver, "juan", "123456", "Entity");
+		PO_LoginView.fillForm(driver, "Juan", "123456", "Entity");
 		// Comprobamos que entramos en sesión
 		SeleniumUtils.esperaCargaPagina(driver, "text", "Bienvenidos al sistema de incidencias", PO_View.getTimeout());
 
@@ -180,7 +180,7 @@ public class InciManagerTests {
 	public void test9ListaIncidencia() {
 
 		// Rellenamos el formulario
-		PO_LoginView.fillForm(driver, "juan", "123456", "Entity");
+		PO_LoginView.fillForm(driver, "Juan", "123456", "Entity");
 		// Comprobamos que entramos en sesión
 		SeleniumUtils.esperaCargaPagina(driver, "text", "Bienvenidos al sistema de incidencias", PO_View.getTimeout());
 
