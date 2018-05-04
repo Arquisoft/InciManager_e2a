@@ -1,4 +1,4 @@
-[![Codacy Badge]([![Codacy Badge](https://api.codacy.com/project/badge/Grade/7f82a6aac6f3414f82dfc247aa78d98e)](https://www.codacy.com/app/JesusGarciaMinas/InciManager_e2a?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Arquisoft/InciManager_e2a&amp;utm_campaign=Badge_Grade))
+([![Codacy Badge](https://api.codacy.com/project/badge/Grade/7f82a6aac6f3414f82dfc247aa78d98e)](https://www.codacy.com/app/JesusGarciaMinas/InciManager_e2a?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Arquisoft/InciManager_e2a&amp;utm_campaign=Badge_Grade))
 [![Build Status](https://travis-ci.org/Arquisoft/Agents_e2a.svg?branch=master)](https://travis-ci.org/Arquisoft/InciManager_e2a)
 [![codecov](https://codecov.io/gh/Arquisoft/InciManager_e2a/branch/master/graph/badge.svg)](https://codecov.io/gh/Arquisoft/InciManager_e2a)
 
