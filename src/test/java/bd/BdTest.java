@@ -23,7 +23,7 @@ import manager.entities.Campo;
 import manager.entities.Etiqueta;
 import manager.entities.Incidencia;
 import manager.entities.Location;
-import manager.services.AgentsService;
+import manager.services.GetAgentService;
 import manager.services.CampoService;
 import manager.services.EtiquetaService;
 import manager.services.IncidenciaService;
@@ -35,7 +35,7 @@ import manager.services.IncidenciaService;
 public class BdTest {
 	
 	@Autowired
-	AgentsService agentService;
+	GetAgentService agentService;
 	@Autowired
 	IncidenciaService incidenciaService;
 	@Autowired
