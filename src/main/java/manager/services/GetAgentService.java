@@ -27,11 +27,10 @@ public class GetAgentService {
 
 	private Agent callAgent(String usuario, String password, String kind) throws Exception {
 		URL url = new URL("http://35.180.34.205:8070/info");
-		//URL url = new URL("http://localhost:8070/info");
 
 		HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-		connection.setConnectTimeout(5000);// 5 secs
-		connection.setReadTimeout(5000);// 5 secs
+		connection.setConnectTimeout(5000);
+		connection.setReadTimeout(5000);
 		connection.setRequestMethod("POST");
 		connection.setDoOutput(true);
 		connection.setRequestProperty("Content-Type", "application/json");
@@ -62,13 +61,13 @@ public class GetAgentService {
 	}
 
 	private Agent generaAgente(JSONObject obj) {
-		Agent a =  new Agent(obj.getLong("id"), obj.getString("password"), obj.getString("kind"), obj.getLong("kindCode"),
-				obj.getString("dni"), obj.getString("nombre"), obj.getString("apellidos"), obj.getString("email"),
-				obj.getString("username"));
+		Agent a = new Agent(obj.getLong("id"), obj.getString("password"), obj.getString("kind"),
+				obj.getLong("kindCode"), obj.getString("dni"), obj.getString("nombre"), obj.getString("apellidos"),
+				obj.getString("email"), obj.getString("username"));
 		System.err.println(a);
 		return a;
 	}
-	
+
 	public Agent buscarAgentePorUsuario(String username) {
 		return agentsRepository.findAgentByUsername(username);
 	}
@@ -76,7 +75,7 @@ public class GetAgentService {
 	public void addAgent(Agent agent) {
 		agentsRepository.save(agent);
 	}
-	
+
 	public void elimnarAgent(Long id) {
 		agentsRepository.delete(id);
 	}

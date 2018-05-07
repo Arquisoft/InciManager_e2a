@@ -20,7 +20,7 @@ public class Location {
 	@NotNull
 	private double longitud;
 
-	@OneToOne //(cascade = {CascadeType.ALL})
+	@OneToOne
 	private Incidencia incidencia;
 
 	public Location() {
@@ -51,7 +51,7 @@ public class Location {
 	public void setLongitud(double longitud) {
 		this.longitud = longitud;
 	}
-	
+
 	public Incidencia getIncidencia() {
 		return incidencia;
 	}
@@ -60,8 +60,7 @@ public class Location {
 		this.incidencia = incidencia;
 		return this;
 	}
-	
-	
+
 	public void setId(Long id) {
 		this.id = id;
 	}

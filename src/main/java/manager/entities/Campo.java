@@ -6,36 +6,32 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 @Entity
-// @Table(uniqueConstraints = @UniqueConstraint(columnNames = { "incidencia",
-// "clave" }))
+
 public class Campo {
 
 	@Id
 	@GeneratedValue
 	private Long id;
 
-	@ManyToOne//(cascade = { CascadeType.ALL })
+	@ManyToOne
 	private Incidencia incidencia;
 
 	private String clave;
 	private String valor;
-	
+
 	private TipoCampos tipo;
 
 	public Campo() {
 
 	}
 
-	
 	public TipoCampos getTipo() {
 		return tipo;
 	}
 
-
 	public void setTipo(TipoCampos tipo) {
 		this.tipo = tipo;
 	}
-
 
 	public Campo(String clave, String valor) {
 		this.clave = clave;

@@ -19,6 +19,7 @@ import manager.entities.Status;
 import manager.streamkafka.KafkaProducer;
 import manager.repository.AgentsRepository;
 import manager.repository.IncidenciasRepository;
+
 @Service
 public class IncidenciaService {
 
@@ -32,7 +33,7 @@ public class IncidenciaService {
 
 	@Autowired
 	private KafkaProducer kafkaProducer;
-	
+
 	public void eliminarIncidencia(Long id) {
 		incidenciasRepository.delete(id);
 	}
@@ -40,22 +41,16 @@ public class IncidenciaService {
 	@Transactional
 	public Incidencia addIncidencia(IncidenciaMin incidencia) {
 		Incidencia inc = new Incidencia();
-		
+
 		Date date = new Date();
-		
+
 		Set<Etiqueta> etiquetas = cogerEtiquetas(incidencia.getEtiqueta(), inc);
-		
+
 		Agent a = agentsRepository.findAgentByUsername(agent.getUsername());
 		Set<Campo> campos = cogerCampos(incidencia.getCampo(), inc);
 		Location location = new Location(incidencia.getLatitud(), incidencia.getLongitud()).setIncidencia(inc);
 		inc.setNombre(incidencia.getNombre()).setDescripcion(incidencia.getDescripcion()).setLocalizacion(location)
-				.setEtiquetas(etiquetas).setCampos(campos).setAgent(a).setEstado(Status.ABIERTO).setFecha(date);	
-		//incidenciasRepository.save(inc);
-		//etiquetasRepository.save(etiquetas);
-		//camposRepository.save(campos);
-		//locationRepository.save(location);
-		//a.getIncidencias().add(inc);
-		//agentsRepository.save(a);
+				.setEtiquetas(etiquetas).setCampos(campos).setAgent(a).setEstado(Status.ABIERTO).setFecha(date);
 		kafkaProducer.send("lll0s2u5-incidencias", inc.toString());
 		return inc;
 	}
@@ -89,7 +84,7 @@ public class IncidenciaService {
 	public Incidencia getIncidencia(Long id) {
 		return incidenciasRepository.findOne(id);
 	}
-	
+
 	public Incidencia nuevaIncidencia(Incidencia i) {
 		incidenciasRepository.save(i);
 		return i;

@@ -5,11 +5,13 @@ import static org.junit.Assert.assertEquals;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.IntegrationTest;
 import org.springframework.boot.test.SpringApplicationContextLoader;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.util.Assert;
 
@@ -34,8 +36,8 @@ public class LoginStep {
 	IncidenciaService iService;
 	IncidenciaMin i ;
 	@Autowired
-	GetAgentService aService;
-	Agent agente ;
+	GetAgentService GetAgentService;
+	Agent agent ;
 	@Autowired
 	AgentController aControler;
 
@@ -49,18 +51,17 @@ public class LoginStep {
 		i.setLongitud(7.9);
 		Incidencia incidence = iService.addIncidencia(i);
 		Assert.notNull(incidence);
-		
+		GetAgentService.elimnarAgent(agent.getId());
 		
 	}
 	
 	@Given("^un Agente \"([^\"]*)\" Y contraseña \"([^\"]*)\" Y tipo \"([^\"]*)\"$")
 	public void un_Agente_Y_contraseña_Y_tipo(String name , String password, String kind) throws Throwable {
 	    // Write code here that turns the phrase above into concrete actions
-Agent agent = new Agent();
-		
+		agent = new Agent();
 		String nombreUsuario = "Pepe";
 		Long kindcode = 1L;
-		String dni = "345567678G";
+		String dni = "345567678Ghgjfgjfgh";
 		String nombre = "Daniel";
 		String apellidos = "Suarez";
 		String email = "danisua@uniovi.es";
@@ -72,10 +73,11 @@ Agent agent = new Agent();
 		agent.setNombre(nombre);
 		agent.setApellidos(apellidos);
 		agent.setEmail(email);
-		aService.addAgent(agent);
+		GetAgentService.addAgent(agent);
 		
 		String agente = aControler.showInfo(name, password, kind, null);
 		assertEquals("index", agente);
+		//GetAgentService.elimnarAgent(agent.getId());
 	}
 
 	

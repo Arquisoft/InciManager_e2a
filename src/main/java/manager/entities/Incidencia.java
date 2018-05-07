@@ -51,7 +51,6 @@ public class Incidencia {
 	@Column(length=1000)
 	private String comentarioOperario;
 	
-	//private TipoCampos tipoIncidencia;
 
 	public Incidencia() {
 	}
@@ -64,7 +63,6 @@ public class Incidencia {
 		this.location = localizacion;
 		this.etiquetas = etiquetas;
 		this.campos = campos;
-		// this.estado = EstadoIncidencia.ABIERTA;
 		this.estado = Status.ABIERTO;
 		fecha = new Date();
 	}
