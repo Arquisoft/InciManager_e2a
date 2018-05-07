@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import manager.entities.Agent;
-import manager.services.AgentsService;
+import manager.services.GetAgentService;
 import manager.services.IncidenciaService;
 
 @Controller
@@ -18,7 +18,7 @@ public class AgentController {
 	private IncidenciaService incidenciaService;
 
 	@Autowired
-	private AgentsService agentsService;
+	private GetAgentService agentsService;
 
 	@RequestMapping(value = "/index", method = RequestMethod.POST)
 	public String showInfo(@RequestParam String login, @RequestParam String password,

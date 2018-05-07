@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import manager.StreamKafka.KafkaProducer;
 import manager.entities.Agent;
 import manager.entities.Campo;
 import manager.entities.Etiqueta;
@@ -16,7 +17,6 @@ import manager.entities.Incidencia;
 import manager.entities.IncidenciaMin;
 import manager.entities.Location;
 import manager.entities.Status;
-import manager.kafka.KafkaProducer;
 import manager.repository.AgentsRepository;
 import manager.repository.IncidenciasRepository;
 @Service
