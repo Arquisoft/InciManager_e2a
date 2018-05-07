@@ -16,7 +16,7 @@ import manager.entities.Incidencia;
 import manager.entities.IncidenciaMin;
 import manager.entities.Location;
 import manager.entities.Status;
-import manager.kafka.KafkaProducer;
+import manager.streamkafka.KafkaProducer;
 import manager.repository.AgentsRepository;
 import manager.repository.IncidenciasRepository;
 @Service

@@ -20,7 +20,7 @@ import manager.controllers.AgentController;
 import manager.entities.Agent;
 import manager.entities.Incidencia;
 import manager.entities.IncidenciaMin;
-import manager.services.AgentsService;
+import manager.services.GetAgentService;
 import manager.services.IncidenciaService;
 
 
@@ -34,7 +34,7 @@ public class LoginFailedStep {
 	IncidenciaService iService;
 	IncidenciaMin i ;
 	@Autowired
-	AgentsService aService;
+	GetAgentService aService;
 	Agent agente ;
 	@Autowired
 	AgentController aControler;
