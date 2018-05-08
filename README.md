@@ -60,3 +60,7 @@ Estos son los autores de la versión del proyecto del curso 2017-2018.
 * Login: juan, pedro, raul
 * Password: 1234
 * King: Person, Entity, Sensor (Respectivamente)
+
+### Gatling
+Hemos usado Gatling para las pruebas de carga de la aplicación.
+**[Aquí](https://unioviedo-my.sharepoint.com/:f:/g/personal/uo251017_uniovi_es/EgJm0oEGSz1Oiso5Zf-Deb0B5crppCiY4ttCSpvs8OhaZw?e=114Plb)** puedes encontrar toda la información necesaria de las pruebas de carga. Descarga la carpeta, y abre el fichero index.html.
