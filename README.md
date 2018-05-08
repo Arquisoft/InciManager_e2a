@@ -102,3 +102,6 @@ Una vez rellenados todos los campos y enviada la incidencia se mostrará un mens
 ![funcionamiento](https://github.com/Arquisoft/inci_e2a/blob/master/readme_imagenes/Funcionamiento_Manager_3.png)
 
 
+## Gatling ##
+
+Hemos usado Gatling para las pruebas de carga de la aplicación. Para ver los resultados descargue la carpeta que aparece en [este directorio](https://unioviedo-my.sharepoint.com/:f:/g/personal/uo251017_uniovi_es/EgJm0oEGSz1Oiso5Zf-Deb0BGOpMnNJaqJUY8f2n91A6Mw?e=K8ETc2) y abra el fichero index.html
