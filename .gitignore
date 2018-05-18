@@ -23,6 +23,8 @@ hs_err_pid*
 
 # Extras
 .classpath
+.settings/*
+/.settings/
 .project
 /target/*
 /target/
